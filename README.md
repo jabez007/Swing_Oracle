@@ -1,5 +1,5 @@
 # Penny_Oracle
-Using Python and Machine Learning to identify trends in penny stocks and possible swing trades
+Using Python and Machine Learning to identify trends in penny stocks and possible (swing trades)[https://www.eatsleeptrade.net/my-swing-trading-strategies]
 
 ## Resources
 * [Intrinio Stock Screener API](http://docs.intrinio.com/?shell#securities-search-screener) for identifying stocks to train on and also make predictions on.
