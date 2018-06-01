@@ -1,0 +1,7 @@
+{
+  "intrinio": {
+    "api username": API_USERNAME,
+    "api password": API_PASSWORD
+  },
+  "alpha vantage": API_KEY
+}
