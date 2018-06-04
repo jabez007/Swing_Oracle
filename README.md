@@ -10,7 +10,7 @@ Using Python and Machine Learning to identify trends in penny stocks and possibl
 ## Outline
 
 ### Training
-We will use the screener API to search for securities on the NYSE `Stock Exchange` that have `52 Week Low` >= $1.00 and `52 week high` <= $25.00 with a `Market Capitalization` between $300,000,000 and $2,000,000,000 and `Average Daily Volume` over 500,000
+We will use the screener API to search for securities on the NYSE `Stock Exchange` that have `52 Week Low` >= $1.00 and `52 Week High` <= $25.00 with a `Market Capitalization` between $300,000,000 and $2,000,000,000 and `Average Daily Volume` over 500,000
 ```
 https://api.intrinio.com/securities/search?conditions=stock_exchange~eq~NYSE,52_week_low~gte~1.00,52_week_high~lte~25.00,marketcap~gte~300000000,marketcap~lte~2000000000,average_daily_volume~gte~500000
 ```
