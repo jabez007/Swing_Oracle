@@ -1,4 +1,4 @@
-# Penny_Oracle
+# Swing_Oracle
 Using Python and Machine Learning to identify trends in small cap stocks under $25 and possible [swing trades](https://www.eatsleeptrade.net/my-swing-trading-strategies)
 
 ## Resources
