@@ -10,9 +10,9 @@ Using Python and Machine Learning to identify trends in penny stocks and possibl
 ## Outline
 
 ### Training
-We will use the screener API to search for securities on the NYSE `Stock Exchange` that have `52 Week Low` >= $1.00 and `52 Week High` <= $25.00 with a `Market Capitalization` between $300,000,000 and $2,000,000,000 and `Average Daily Volume` over 500,000
+We will use the screener API to search for securities on the NYSE `Stock Exchange` that have `52 Week Low` >= $1.00 and `52 Week High` <= $25.00 but a current `High Price` <= $5.00 with a `Market Capitalization` between $300,000,000 and $2,000,000,000 and `Average Daily Volume` over 500,000
 ```
-https://api.intrinio.com/securities/search?conditions=stock_exchange~eq~NYSE,52_week_low~gte~1.00,52_week_high~lte~25.00,marketcap~gte~300000000,marketcap~lte~2000000000,average_daily_volume~gte~500000
+https://api.intrinio.com/securities/search?conditions=stock_exchange~eq~NYSE,52_week_low~gte~1.00,52_week_high~lte~25.00,high_price~lte~5.00,marketcap~gte~300000000,marketcap~lte~2000000000,average_daily_volume~gte~500000
 ```
 to get out our list of ticker symbols.
 With that list of tickers, we will go through each one to pull the last 100 days worth of data from Alpha Vantage
@@ -22,9 +22,9 @@ https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&api
 And those 100 days will then be split on a `Sequence Size` of 20 to train our Recurrent Neural Network [LSTM](https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/) model 
 
 ### Forecasting
-Here we will again use the screener API to search for securities on the NYSE `Stock Exchange` that have `52 Week Low` >= $1.00 and `52 week high` <= $25.00 with a `Market Capitalization` between $300,000,000 and $2,000,000,000 and `Average Daily Volume` over 500,000
+Here we will again use the screener API to search for securities on the NYSE `Stock Exchange` that have `52 Week Low` >= $1.00 and `52 Week High` <= $25.00 but a current `High Price` <= $5.00 with a `Market Capitalization` between $300,000,000 and $2,000,000,000 and `Average Daily Volume` over 500,000
 ```
-https://api.intrinio.com/securities/search?conditions=stock_exchange~eq~NYSE,52_week_low~gte~1.00,52_week_high~lte~25.00,marketcap~gte~300000000,marketcap~lte~2000000000,average_daily_volume~gte~500000
+https://api.intrinio.com/securities/search?conditions=stock_exchange~eq~NYSE,52_week_low~gte~1.00,52_week_high~lte~25.00,high_price~lte~5.00,marketcap~gte~300000000,marketcap~lte~2000000000,average_daily_volume~gte~500000
 ```
 to get out our list of ticker symbols, and with that list of tickers pull the last 100 days worths of data from Alpha Vantage
 ```
