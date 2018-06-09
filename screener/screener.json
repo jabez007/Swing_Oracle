@@ -1,0 +1,938 @@
+[
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 10.253450367165,
+        "52_week_high": 13.8446346745053,
+        "marketcap": 1430000000.0,
+        "average_daily_volume": 650912.0,
+        "ticker": "ACCO"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.42,
+        "52_week_high": 7.49,
+        "marketcap": 700780000.0,
+        "average_daily_volume": 833806.0,
+        "ticker": "AHT"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.0,
+        "52_week_high": 7.04,
+        "marketcap": 1453914000.0,
+        "average_daily_volume": 9245167.0,
+        "ticker": "AKS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.52533565799427,
+        "52_week_high": 13.9701,
+        "marketcap": 953405640.0,
+        "average_daily_volume": 934983.0,
+        "ticker": "ALJ"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.55,
+        "52_week_high": 5.9283185840708,
+        "marketcap": 496816100.0,
+        "average_daily_volume": 648137.0,
+        "ticker": "ANH"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.01583234456086,
+        "52_week_high": 12.5597469447005,
+        "marketcap": 1580993600.0,
+        "average_daily_volume": 1006733.0,
+        "ticker": "AROC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.91,
+        "52_week_high": 15.37,
+        "marketcap": 750651440.0,
+        "average_daily_volume": 4268794.0,
+        "ticker": "ATW"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.75,
+        "52_week_high": 3.89,
+        "marketcap": 608940000.0,
+        "average_daily_volume": 8805050.0,
+        "ticker": "AVP"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 13.377,
+        "52_week_high": 20.27,
+        "marketcap": 1754550000.0,
+        "average_daily_volume": 988673.0,
+        "ticker": "AXL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 16.7712678750195,
+        "52_week_high": 23.1084329777038,
+        "marketcap": 1136520000.0,
+        "average_daily_volume": 1247526.0,
+        "ticker": "BANC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.78,
+        "52_week_high": 12.32,
+        "marketcap": 921531912.0,
+        "average_daily_volume": 989520.0,
+        "ticker": "BETR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.275,
+        "52_week_high": 15.66,
+        "marketcap": 1498398000.0,
+        "average_daily_volume": 2653425.0,
+        "ticker": "BKD"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.1,
+        "52_week_high": 8.06317669172932,
+        "marketcap": 432261550.0,
+        "average_daily_volume": 971161.0,
+        "ticker": "BKS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.36,
+        "52_week_high": 18.91,
+        "marketcap": 422051404.8,
+        "average_daily_volume": 684133.0,
+        "ticker": "BRS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 11.95,
+        "52_week_high": 23.2399,
+        "marketcap": 495723150.0,
+        "average_daily_volume": 708633.0,
+        "ticker": "BZH"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 11.65,
+        "52_week_high": 22.2,
+        "marketcap": 524520000.0,
+        "average_daily_volume": 878252.0,
+        "ticker": "CBB"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 3.8,
+        "52_week_high": 9.05453851354743,
+        "marketcap": 865160000.0,
+        "average_daily_volume": 1871390.0,
+        "ticker": "CBL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.68,
+        "52_week_high": 8.05,
+        "marketcap": 453334000.0,
+        "average_daily_volume": 1622292.0,
+        "ticker": "CCG"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.71,
+        "52_week_high": 9.92,
+        "marketcap": 1088416000.0,
+        "average_daily_volume": 4221542.0,
+        "ticker": "CDE"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.82573144591482,
+        "52_week_high": 10.9,
+        "marketcap": 1055160720.0,
+        "average_daily_volume": 2372360.0,
+        "ticker": "CHS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 10.03,
+        "52_week_high": 13.4344279426653,
+        "marketcap": 444834720.0,
+        "average_daily_volume": 652000.0,
+        "ticker": "CIO"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.07,
+        "52_week_high": 10.805,
+        "marketcap": 428881440.0,
+        "average_daily_volume": 584655.0,
+        "ticker": "CKP"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.17,
+        "52_week_high": 10.4899841921438,
+        "marketcap": 857450020.0,
+        "average_daily_volume": 785415.0,
+        "ticker": "CMO"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 11.73357274927,
+        "52_week_high": 18.5171929460139,
+        "marketcap": 1725290000.0,
+        "average_daily_volume": 840262.0,
+        "ticker": "CPPL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.57,
+        "52_week_high": 4.195,
+        "marketcap": 515993520.0,
+        "average_daily_volume": 851247.0,
+        "ticker": "CVEO"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 3.69,
+        "52_week_high": 10.18,
+        "marketcap": 445797239.1,
+        "average_daily_volume": 3840840.0,
+        "ticker": "CYH"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.25,
+        "52_week_high": 8.48516949152542,
+        "marketcap": 1127421300.0,
+        "average_daily_volume": 2344139.0,
+        "ticker": "CYS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.92,
+        "52_week_high": 22.57,
+        "marketcap": 1373235000.0,
+        "average_daily_volume": 3705863.0,
+        "ticker": "DDD"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.06782266009852,
+        "52_week_high": 18.0462618192764,
+        "marketcap": 873619484.5,
+        "average_daily_volume": 3591186.0,
+        "ticker": "DF"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.1192,
+        "52_week_high": 18.37,
+        "marketcap": 1491702346.6,
+        "average_daily_volume": 866285.0,
+        "ticker": "DNOW"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.23,
+        "52_week_high": 3.095,
+        "marketcap": 469520000.0,
+        "average_daily_volume": 1269735.0,
+        "ticker": "ECR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 12.003124432518,
+        "52_week_high": 19.489,
+        "marketcap": 1858277700.0,
+        "average_daily_volume": 618535.0,
+        "ticker": "ELY"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.265,
+        "52_week_high": 4.58,
+        "marketcap": 712167000.0,
+        "average_daily_volume": 4393140.0,
+        "ticker": "EPE"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.08,
+        "52_week_high": 8.99,
+        "marketcap": 320001840.0,
+        "average_daily_volume": 1173069.0,
+        "ticker": "EVRI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 11.0419244056659,
+        "52_week_high": 15.85,
+        "marketcap": 996922080.0,
+        "average_daily_volume": 602686.0,
+        "ticker": "EXL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.28,
+        "52_week_high": 11.34,
+        "marketcap": 721660500.0,
+        "average_daily_volume": 1951701.0,
+        "ticker": "EXPR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.48,
+        "52_week_high": 8.1,
+        "marketcap": 1687117560.0,
+        "average_daily_volume": 629796.0,
+        "ticker": "FBP"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.80206552287798,
+        "52_week_high": 8.97870195467912,
+        "marketcap": 1006421800.0,
+        "average_daily_volume": 952062.0,
+        "ticker": "FCH"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 10.05,
+        "52_week_high": 17.969,
+        "marketcap": 1557540850.0,
+        "average_daily_volume": 723273.0,
+        "ticker": "FET"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.51,
+        "52_week_high": 7.32,
+        "marketcap": 1321659120.0,
+        "average_daily_volume": 9416697.0,
+        "ticker": "FIT"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 12.2,
+        "52_week_high": 21.6845259016843,
+        "marketcap": 1392580000.0,
+        "average_daily_volume": 3528364.0,
+        "ticker": "GME"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 15.1031460144203,
+        "52_week_high": 21.0076540041739,
+        "marketcap": 1540159000.0,
+        "average_daily_volume": 536414.0,
+        "ticker": "GNL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.66,
+        "52_week_high": 4.15,
+        "marketcap": 1784585000.0,
+        "average_daily_volume": 8098671.0,
+        "ticker": "GNW"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 10.7,
+        "52_week_high": 17.8,
+        "marketcap": 976378400.0,
+        "average_daily_volume": 563429.0,
+        "ticker": "GTN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 17.6,
+        "52_week_high": 22.9095721925134,
+        "marketcap": 951592720.0,
+        "average_daily_volume": 529186.0,
+        "ticker": "HIFR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 3.685,
+        "52_week_high": 9.07,
+        "marketcap": 701711040.0,
+        "average_daily_volume": 1561303.0,
+        "ticker": "HK"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 3.24794952681388,
+        "52_week_high": 5.99524200547572,
+        "marketcap": 1491134330.0,
+        "average_daily_volume": 8347615.0,
+        "ticker": "HL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.84,
+        "52_week_high": 8.7,
+        "marketcap": 1117495860.0,
+        "average_daily_volume": 1982428.0,
+        "ticker": "HLX"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.87642263875719,
+        "52_week_high": 16.4,
+        "marketcap": 1545119385.4,
+        "average_daily_volume": 1062968.0,
+        "ticker": "HTS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 16.05,
+        "52_week_high": 24.25,
+        "marketcap": 1814000400.0,
+        "average_daily_volume": 512850.0,
+        "ticker": "HW"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.5,
+        "52_week_high": 13.0,
+        "marketcap": 1222826640.0,
+        "average_daily_volume": 1031124.0,
+        "ticker": "INVN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.03,
+        "52_week_high": 5.31,
+        "marketcap": 522576000.0,
+        "average_daily_volume": 1386783.0,
+        "ticker": "IPI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.73914125962645,
+        "52_week_high": 10.7553514837892,
+        "marketcap": 1066167070.0,
+        "average_daily_volume": 647546.0,
+        "ticker": "IRC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.61,
+        "52_week_high": 6.58885014345619,
+        "marketcap": 659772910.0,
+        "average_daily_volume": 628939.0,
+        "ticker": "IRET"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.26,
+        "52_week_high": 10.5072755910789,
+        "marketcap": 832256416.0,
+        "average_daily_volume": 666482.0,
+        "ticker": "IRT"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 15.0534626347386,
+        "52_week_high": 18.4245299615173,
+        "marketcap": 1821785280.0,
+        "average_daily_volume": 1278604.0,
+        "ticker": "IVR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.25,
+        "52_week_high": 5.6262,
+        "marketcap": 740804000.0,
+        "average_daily_volume": 9598801.0,
+        "ticker": "JCP"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.2,
+        "52_week_high": 20.28,
+        "marketcap": 327642000.0,
+        "average_daily_volume": 1981783.0,
+        "ticker": "KEG"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 12.9,
+        "52_week_high": 21.75,
+        "marketcap": 1346058000.0,
+        "average_daily_volume": 942575.0,
+        "ticker": "KKD"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 10.945,
+        "52_week_high": 19.13,
+        "marketcap": 1335008571.8,
+        "average_daily_volume": 698689.0,
+        "ticker": "KN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.5,
+        "52_week_high": 11.9,
+        "marketcap": 796734000.0,
+        "average_daily_volume": 1092739.0,
+        "ticker": "KND"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 13.6200038126708,
+        "52_week_high": 20.482161212671,
+        "marketcap": 1312149506.6,
+        "average_daily_volume": 529025.0,
+        "ticker": "KRG"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 12.2542236954662,
+        "52_week_high": 15.73,
+        "marketcap": 1493795169.5,
+        "average_daily_volume": 544641.0,
+        "ticker": "LADR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.57,
+        "52_week_high": 6.56,
+        "marketcap": 1380387693.3,
+        "average_daily_volume": 4834685.0,
+        "ticker": "LC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.04,
+        "52_week_high": 10.97,
+        "marketcap": 748235356.8,
+        "average_daily_volume": 2728199.0,
+        "ticker": "MBI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 14.01,
+        "52_week_high": 21.31,
+        "marketcap": 1892550000.0,
+        "average_daily_volume": 1772723.0,
+        "ticker": "MRC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.81591011235955,
+        "52_week_high": 2.85357303370787,
+        "marketcap": 738165780.0,
+        "average_daily_volume": 1974548.0,
+        "ticker": "MUX"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.54884120171674,
+        "52_week_high": 12.8459868331618,
+        "marketcap": 1930334000.0,
+        "average_daily_volume": 1618943.0,
+        "ticker": "MWA"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.13,
+        "52_week_high": 6.675,
+        "marketcap": 303258120.0,
+        "average_daily_volume": 1377171.0,
+        "ticker": "MWW"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 10.536242571515,
+        "52_week_high": 17.3230581822687,
+        "marketcap": 1103890500.0,
+        "average_daily_volume": 536108.0,
+        "ticker": "MYCC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 3.14,
+        "52_week_high": 6.33,
+        "marketcap": 1385965250.0,
+        "average_daily_volume": 11264734.0,
+        "ticker": "NE"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.80100306472707,
+        "52_week_high": 16.6210355897571,
+        "marketcap": 1403499544.0,
+        "average_daily_volume": 2246677.0,
+        "ticker": "NGL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.18,
+        "52_week_high": 12.58,
+        "marketcap": 1068407090.0,
+        "average_daily_volume": 738945.0,
+        "ticker": "NMBL"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.56,
+        "52_week_high": 9.78,
+        "marketcap": 300518610.0,
+        "average_daily_volume": 905282.0,
+        "ticker": "NPTN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.575,
+        "52_week_high": 11.15,
+        "marketcap": 966669900.0,
+        "average_daily_volume": 885310.0,
+        "ticker": "NR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 15.9501,
+        "52_week_high": 20.71,
+        "marketcap": 1768140240.0,
+        "average_daily_volume": 1060056.0,
+        "ticker": "NSM"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.52,
+        "52_week_high": 4.84,
+        "marketcap": 603039041.9,
+        "average_daily_volume": 1984712.0,
+        "ticker": "OCN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.74918566775244,
+        "52_week_high": 14.7,
+        "marketcap": 624161000.0,
+        "average_daily_volume": 918261.0,
+        "ticker": "OFG"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.22,
+        "52_week_high": 12.1,
+        "marketcap": 1340024133.4,
+        "average_daily_volume": 2099376.0,
+        "ticker": "OWW"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.8909,
+        "52_week_high": 3.78678319526627,
+        "marketcap": 918141994.6,
+        "average_daily_volume": 730716.0,
+        "ticker": "OZM"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 4.09,
+        "52_week_high": 9.98,
+        "marketcap": 1884105000.0,
+        "average_daily_volume": 10715201.0,
+        "ticker": "P"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.12489451476793,
+        "52_week_high": 15.0356361762093,
+        "marketcap": 1685504260.0,
+        "average_daily_volume": 1448866.0,
+        "ticker": "PBI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.48,
+        "52_week_high": 19.03,
+        "marketcap": 1171050000.0,
+        "average_daily_volume": 1181524.0,
+        "ticker": "PBY"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.69417112299465,
+        "52_week_high": 12.0434158318897,
+        "marketcap": 770483070.0,
+        "average_daily_volume": 619362.0,
+        "ticker": "PEI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.6,
+        "52_week_high": 6.35,
+        "marketcap": 419072400.0,
+        "average_daily_volume": 677518.0,
+        "ticker": "PES"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.01,
+        "52_week_high": 15.0,
+        "marketcap": 352406000.0,
+        "average_daily_volume": 707337.0,
+        "ticker": "PHH"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 14.0750985721222,
+        "52_week_high": 18.9,
+        "marketcap": 1305963750.0,
+        "average_daily_volume": 811967.0,
+        "ticker": "PMT"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.5,
+        "52_week_high": 16.95,
+        "marketcap": 1426699058.0,
+        "average_daily_volume": 537240.0,
+        "ticker": "PRTY"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.38,
+        "52_week_high": 4.21,
+        "marketcap": 1647915960.0,
+        "average_daily_volume": 11910163.0,
+        "ticker": "RAD"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.55,
+        "52_week_high": 14.25,
+        "marketcap": 1241931656.0,
+        "average_daily_volume": 1081399.0,
+        "ticker": "RATE"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.02,
+        "52_week_high": 17.331,
+        "marketcap": 1983520000.0,
+        "average_daily_volume": 3814540.0,
+        "ticker": "RDC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.56,
+        "52_week_high": 13.732386261616,
+        "marketcap": 563940364.7,
+        "average_daily_volume": 916870.0,
+        "ticker": "RESI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.25,
+        "52_week_high": 14.01,
+        "marketcap": 1154966670.0,
+        "average_daily_volume": 686029.0,
+        "ticker": "RKUS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.656,
+        "52_week_high": 13.34,
+        "marketcap": 566214000.0,
+        "average_daily_volume": 689159.0,
+        "ticker": "RLD"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 11.15,
+        "52_week_high": 14.95,
+        "marketcap": 972345400.0,
+        "average_daily_volume": 744974.0,
+        "ticker": "RPT"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.19,
+        "52_week_high": 12.0503821775955,
+        "marketcap": 435860000.0,
+        "average_daily_volume": 1464917.0,
+        "ticker": "RRD"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 14.0253703703704,
+        "52_week_high": 16.8299157206742,
+        "marketcap": 1774391390.8,
+        "average_daily_volume": 863540.0,
+        "ticker": "RWT"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 14.05,
+        "52_week_high": 21.36,
+        "marketcap": 1884608990.0,
+        "average_daily_volume": 990084.0,
+        "ticker": "SBH"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 12.2940414453416,
+        "52_week_high": 17.6910363200843,
+        "marketcap": 1700895000.0,
+        "average_daily_volume": 1172316.0,
+        "ticker": "SCS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 13.015,
+        "52_week_high": 21.9,
+        "marketcap": 507906750.0,
+        "average_daily_volume": 14256248.0,
+        "ticker": "SD"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 10.4214,
+        "52_week_high": 18.5,
+        "marketcap": 1555210360.0,
+        "average_daily_volume": 2308629.0,
+        "ticker": "SEAS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.78,
+        "52_week_high": 7.65,
+        "marketcap": 324485190.0,
+        "average_daily_volume": 2220611.0,
+        "ticker": "SN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.77,
+        "52_week_high": 9.95225673954904,
+        "marketcap": 640512000.0,
+        "average_daily_volume": 552582.0,
+        "ticker": "SNR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.655,
+        "52_week_high": 12.725,
+        "marketcap": 1595302000.0,
+        "average_daily_volume": 4131426.0,
+        "ticker": "SPN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.75,
+        "52_week_high": 12.46,
+        "marketcap": 893595600.0,
+        "average_daily_volume": 840499.0,
+        "ticker": "STAR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.2,
+        "52_week_high": 13.95,
+        "marketcap": 893364000.0,
+        "average_daily_volume": 849588.0,
+        "ticker": "SXC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 9.87875536480687,
+        "52_week_high": 19.4825807434964,
+        "marketcap": 1852220000.0,
+        "average_daily_volume": 1229554.0,
+        "ticker": "TIME"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.73,
+        "52_week_high": 14.03,
+        "marketcap": 1822002000.0,
+        "average_daily_volume": 877062.0,
+        "ticker": "TLN"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 12.54,
+        "52_week_high": 20.24,
+        "marketcap": 848350000.0,
+        "average_daily_volume": 1013126.0,
+        "ticker": "TMST"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.85,
+        "52_week_high": 4.85,
+        "marketcap": 480895800.0,
+        "average_daily_volume": 852155.0,
+        "ticker": "TTI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 7.96297235738432,
+        "52_week_high": 14.53,
+        "marketcap": 693962840.0,
+        "average_daily_volume": 513973.0,
+        "ticker": "TWI"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 6.9,
+        "52_week_high": 13.9,
+        "marketcap": 808925000.0,
+        "average_daily_volume": 1682054.0,
+        "ticker": "UIS"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 2.7,
+        "52_week_high": 6.0946,
+        "marketcap": 454862250.0,
+        "average_daily_volume": 1504261.0,
+        "ticker": "VSLR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 15.8823619212009,
+        "52_week_high": 23.82,
+        "marketcap": 1626709000.0,
+        "average_daily_volume": 2369309.0,
+        "ticker": "WDR"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 8.54,
+        "52_week_high": 10.675,
+        "marketcap": 438935817.2,
+        "average_daily_volume": 734316.0,
+        "ticker": "WMC"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 5.02769885917219,
+        "52_week_high": 8.55151318231003,
+        "marketcap": 1469468000.0,
+        "average_daily_volume": 1261495.0,
+        "ticker": "WPG"
+    },
+    {
+        "stock_exchange": "NYSE",
+        "52_week_low": 1.81,
+        "52_week_high": 8.9177,
+        "marketcap": 977760000.0,
+        "average_daily_volume": 2197307.0,
+        "ticker": "WTI"
+    }
+]
