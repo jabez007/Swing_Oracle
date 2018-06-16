@@ -105,4 +105,5 @@ venv.bak/
 
 .vs/
 .idea/
+venv/
 app.config
