@@ -4,5 +4,4 @@ import screener
 
 
 config = configuration_manager.AppSettings()
-
-screener.save()
+print(screener.TICKERS[0]["ticker"])
