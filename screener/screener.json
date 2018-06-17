@@ -1816,5 +1816,26 @@
         "marketcap": 601643000.0,
         "average_daily_volume": 1491584.0,
         "ticker": "ZIOP"
+    },
+    {
+        "52_week_low": 8.1102,
+        "52_week_high": 15.09,
+        "marketcap": 1934584620.7,
+        "average_daily_volume": 3488581.0,
+        "ticker": "GPOR"
+    },
+    {
+        "52_week_low": 1.84,
+        "52_week_high": 5.45,
+        "marketcap": 308800579.2,
+        "average_daily_volume": 1466681.0,
+        "ticker": "MEET"
+    },
+    {
+        "52_week_low": 5.18129904612369,
+        "52_week_high": 8.79233606557377,
+        "marketcap": 1985506840.0,
+        "average_daily_volume": 8300992.0,
+        "ticker": "NBR"
     }
 ]
