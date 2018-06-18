@@ -1,7 +1,10 @@
 ﻿import data
+import json
+import oracle
+from pprint import pprint
 import screener
 
-print(screener.TICKERS[0]["ticker"])
-print(len(screener.TICKERS))
+X, y = oracle.format_daily_data(data.DAILY)
 
-print(data._download_daily_full_("AMD").items())
+pprint(X)
+print(len(X))
