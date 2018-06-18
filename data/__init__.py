@@ -1,5 +1,6 @@
-﻿import collections
+from collections import OrderedDict
 import configuration_manager
+from datetime import datetime, timedelta
 import json
 import os
 import oracle
@@ -9,6 +10,7 @@ import screener
 _api_key_ = configuration_manager.AppSettings["alpha vantage"]
 _data_path_ = os.path.dirname(os.path.realpath(__file__))
 _daily_json_ = os.path.join(_data_path_, 'daily.json')
+_year_old_ = datetime.now().date() - timedelta(weeks=52)
 
 
 def _load_daily_100_(tickers):
@@ -33,7 +35,10 @@ def _load_daily_100_(tickers):
         daily_data = json.load(daily_json)
 
     for ticker, dates in daily_data.items():
-        daily_data[ticker] = collections.OrderedDict(sorted(dates.items()))
+        # clean out any data that is older than one year
+        for date in dates.keys():
+            if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
+                del dates[date]
 
     for t in tickers:
         _daily_data = _download_daily_100_(t["ticker"])
@@ -45,9 +50,10 @@ def _load_daily_100_(tickers):
             for date in _daily_data["Daily"]:
                 if date not in daily_data[t["ticker"]]:
                     daily_data[t["ticker"]][date] = _daily_data["Daily"][date]
-
+    
     for ticker, dates in daily_data.items():
-        daily_data[ticker] = collections.OrderedDict(sorted(dates.items()))
+        # make sure dates are sorted oldest to newest
+        daily_data[ticker] = OrderedDict(sorted(dates.items()))
 
     _save_daily_(daily_data)
 
@@ -69,14 +75,14 @@ def _download_daily_100_(symbol):
              }
     """
     data = {"Symbol": "",
-            "Daily": collections.OrderedDict()}
+            "Daily": OrderedDict()}
 
     r = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+symbol+"&apikey="+_api_key_)
     if r.status_code < 400:
         _data = r.json()
         if "Meta Data" in _data:
             data["Symbol"] = _data["Meta Data"]["2. Symbol"]
-            data["Daily"] = collections.OrderedDict(sorted(_data["Time Series (Daily)"].items()))
+            data["Daily"] = OrderedDict(sorted(_data["Time Series (Daily)"].items()))
 
     return data
 
