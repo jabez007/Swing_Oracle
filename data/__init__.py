@@ -36,7 +36,7 @@ def _load_daily_100_(tickers):
 
     for ticker, dates in daily_data.items():
         # clean out any data that is older than one year
-        for date in dates.keys():
+        for date in list(dates.keys()):
             if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
                 del dates[date]
 
