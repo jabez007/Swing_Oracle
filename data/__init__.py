@@ -34,13 +34,13 @@ def _load_daily_(tickers):
     print("loading time series data for each of our ticker symbols")
     with open(_daily_json_) as daily_json:
         daily_data = json.load(daily_json)
-    '''
+
     for ticker, dates in daily_data.items():
         # clean out any data that is older than one year
         for date in list(dates.keys()):
             if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
                 del dates[date]
-    
+    '''
     for t in tickers:
         _daily_data = _download_daily_100_(t["ticker"])
         sleep(2)  # slow it down so we don't hit a rate limit
@@ -79,7 +79,7 @@ def _download_daily_100_(symbol):
     data = {"Symbol": "",
             "Daily": OrderedDict()}
 
-    r = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+symbol+"&outputsize=full&apikey="+_api_key_)
+    r = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+symbol+"&apikey="+_api_key_)
     if r.status_code < 400:
         _data = r.json()
         if "Meta Data" in _data:

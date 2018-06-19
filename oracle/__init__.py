@@ -9,9 +9,9 @@ _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
 _oracle_checkpoint_format_ = "weights-{epoch:02d}-{loss:.4f}.hdf5"
 
 SEQUENCE_LEN = 20
-HIDDEN_LAYER = 1024
+HIDDEN_LAYER = 2048
 EPOCHS = 100
-BATCH_SIZE = 128
+BATCH_SIZE = 64
 
 
 def _format_daily_data_(raw_json):
@@ -40,33 +40,33 @@ def _format_daily_data_(raw_json):
         _x, _y = list(), list()
         for date, data in dates.items():
             if len(_x) < SEQUENCE_LEN:
-                _x += [[data["1. open"],
-                       data["2. high"],
-                       data["3. low"],
-                       data["4. close"],
-                       data["5. volume"]]]
+                _x += [[float(data["1. open"]) / 25.00,
+                       float(data["2. high"]) / 25.00,
+                       float(data["3. low"]) / 25.00,
+                       float(data["4. close"]) / 25.00,
+                       int(data["5. volume"]) / 1000000000.0]]
                 if len(_x) > 1:
-                    _y += [[data["1. open"],
-                           data["2. high"],
-                           data["3. low"],
-                           data["4. close"],
-                           data["5. volume"]]]
+                    _y += [[float(data["1. open"]) / 25.00,
+                           float(data["2. high"]) / 25.00,
+                           float(data["3. low"]) / 25.00,
+                           float(data["4. close"]) / 25.00,
+                           int(data["5. volume"]) / 1000000000.0]]
 
             else:
                 x += [_x]
 
-                _y += [[data["1. open"],
-                       data["2. high"],
-                       data["3. low"],
-                       data["4. close"],
-                       data["5. volume"]]]
+                _y += [[float(data["1. open"]) / 25.00,
+                       float(data["2. high"]) / 25.00,
+                       float(data["3. low"]) / 25.00,
+                       float(data["4. close"]) / 25.00,
+                       int(data["5. volume"]) / 1000000000.0]]
                 y += [_y]
 
-                _x = [[data["1. open"],
-                      data["2. high"],
-                      data["3. low"],
-                      data["4. close"],
-                      data["5. volume"]]]
+                _x = [[float(data["1. open"]) / 25.00,
+                      float(data["2. high"]) / 25.00,
+                      float(data["3. low"]) / 25.00,
+                      float(data["4. close"]) / 25.00,
+                      int(data["5. volume"]) / 1000000000.0]]
                 _y = list()
 
     return numpy.array(x), numpy.array(y)
