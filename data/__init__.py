@@ -6,6 +6,7 @@ import os
 import oracle
 import requests
 import screener
+from time import sleep
 
 _api_key_ = configuration_manager.AppSettings["alpha vantage"]
 _data_path_ = os.path.dirname(os.path.realpath(__file__))
@@ -42,6 +43,7 @@ def _load_daily_100_(tickers):
 
     for t in tickers:
         _daily_data = _download_daily_100_(t["ticker"])
+        sleep(2)  # slow it down so we don't hit a rate limit
         if len(_daily_data["Daily"]) < oracle.SEQUENCE_LEN:
             continue
         if t["ticker"] not in daily_data:
