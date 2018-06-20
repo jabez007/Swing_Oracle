@@ -40,7 +40,7 @@ def _load_daily_(tickers):
         for date in list(dates.keys()):
             if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
                 del dates[date]
-    '''
+
     for t in tickers:
         _daily_data = _download_daily_100_(t["ticker"])
         sleep(2)  # slow it down so we don't hit a rate limit
@@ -50,9 +50,11 @@ def _load_daily_(tickers):
             daily_data[t["ticker"]] = _daily_data["Daily"]
         else:
             for date in _daily_data["Daily"]:
+                if datetime.strptime(date, "%Y-%m-%d").date() == datetime.now().date():
+                    continue  # skip today's date so we don't pull in-progress data
                 if date not in daily_data[t["ticker"]]:
                     daily_data[t["ticker"]][date] = _daily_data["Daily"][date]
-    '''
+
     for ticker, dates in daily_data.items():
         # make sure dates are sorted oldest to newest
         daily_data[ticker] = OrderedDict(sorted(dates.items()))
@@ -79,7 +81,8 @@ def _download_daily_100_(symbol):
     data = {"Symbol": "",
             "Daily": OrderedDict()}
 
-    r = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+symbol+"&apikey="+_api_key_)
+    r = requests.get(
+        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + symbol + "&outputsize=full&apikey=" + _api_key_)
     if r.status_code < 400:
         _data = r.json()
         if "Meta Data" in _data:

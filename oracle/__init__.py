@@ -1,6 +1,6 @@
 from data import DAILY
 from keras.callbacks import ModelCheckpoint
-from keras.layers import Dense, Dropout, LSTM
+from keras.layers import Activation, Dense, Dropout, LSTM
 from keras.models import Sequential
 import os
 import numpy
@@ -10,8 +10,8 @@ _oracle_checkpoint_format_ = "weights-{epoch:02d}-{loss:.4f}.hdf5"
 
 SEQUENCE_LEN = 20
 HIDDEN_LAYER = 2048
-EPOCHS = 100
-BATCH_SIZE = 64
+EPOCHS = 50
+BATCH_SIZE = 32
 
 
 def _format_daily_data_(raw_json):
@@ -74,7 +74,9 @@ def _format_daily_data_(raw_json):
 
 def _build_model_(x, y):
     """
-    define the LSTM model. Load the network weights from a previous run if available
+    define the LSTM model. Load the network weights from a previous run if available.
+    https://machinelearningmastery.com/multi-step-time-series-forecasting-long-short-term-memory-networks-python/
+    https://www.kaggle.com/pablocastilla/predict-stock-prices-with-lstm
     :param x:
     :param y:
     :return:
@@ -84,8 +86,11 @@ def _build_model_(x, y):
     model.add(LSTM(HIDDEN_LAYER, input_shape=(x.shape[1], x.shape[2]), return_sequences=True))
     model.add(Dropout(0.3))
     model.add(LSTM(HIDDEN_LAYER, return_sequences=True))
+    model.add(Dropout(0.2))
     model.add(LSTM(HIDDEN_LAYER, return_sequences=True))
-    model.add(Dense(y.shape[2], activation='softmax'))
+    model.add(Dropout(0.1))
+    model.add(Dense(y.shape[2]))
+    model.add(Activation('linear'))
 
     # load previous network weights
     loss = 10
@@ -96,9 +101,9 @@ def _build_model_(x, y):
                 filename = f
     if filename != "":
         print("checkpoint file: " + filename)
-        model.load_weights(filename)
+        model.load_weights(os.path.join(_oracle_path_, filename))
 
-    model.compile(loss='categorical_crossentropy', optimizer='adam')
+    model.compile(loss='mean_squared_error', optimizer='adam')
 
     return model
 
