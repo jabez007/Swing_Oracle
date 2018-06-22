@@ -1,3 +1,4 @@
+from .TimeSeries import TimeSeries
 from collections import OrderedDict
 import configuration_manager
 from datetime import datetime, timedelta
@@ -55,13 +56,10 @@ def _load_daily_(tickers):
                 if date not in daily_data[t["ticker"]]:
                     daily_data[t["ticker"]][date] = _daily_data["Daily"][date]
 
-    for ticker, dates in daily_data.items():
-        # make sure dates are sorted oldest to newest
-        daily_data[ticker] = OrderedDict(sorted(dates.items()))
-
     _save_daily_(daily_data)
 
-    return daily_data
+    return {ticker: TimeSeries.from_json(ticker, dates) for ticker, dates in daily_data.items()
+            if len(dates) > 0}
 
 
 def _download_daily_100_(symbol):

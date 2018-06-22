@@ -31,8 +31,8 @@ def _load_(tickers=list()):
 
 def _download_(tickers, page=1):
     """
-    downloads a list of ticker symbols that have 52 Week Low >= $1.00 and 52 Week High <= $25.00 with a Market
-    Capitalization between $300,000,000 and $2,000,000,000 and Average Daily Volume over 500,000
+    downloads a list of ticker symbols that have a 52 Week Low >= $1.00 and a 52 Week High <= $25.00, with a Market
+    Capitalization between $300,000,000 and $2,000,000,000, and an Average Daily Volume over 500,000
     :param tickers:
     :param page:
     :return: the list of ticker symbols downloaded from the screener that meet our search parameters
