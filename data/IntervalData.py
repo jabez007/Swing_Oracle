@@ -6,46 +6,47 @@ class IntervalData(object):
     Gives the data for a single time interval such as day, hour, or week
     """
 
-    """
-    the ticker symbol that this interval belongs to
-    """
-    ticker = ""
+    def __init__(self):
+        """
+        the ticker symbol that this interval belongs to
+        """
+        self.ticker = ""
 
-    """
-    the datetime that this interval represents
-    :type datetimeStamp = datetime
-    """
-    datetimeStamp = datetime.now()
+        """
+        the datetime that this interval represents
+        :type datetimeStamp = datetime
+        """
+        self.datetimeStamp = datetime.now()
 
-    """
-    the price at the start of this interval
-    :type open: float
-    """
-    open = 0.00
+        """
+        the price at the start of this interval
+        :type open: float
+        """
+        self.open = 0.00
 
-    """
-    the highest price reached in this interval
-    :type high: float
-    """
-    high = 0.00
+        """
+        the highest price reached in this interval
+        :type high: float
+        """
+        self.high = 0.00
 
-    """
-    the lowest price reached in this interval
-    :type low: float
-    """
-    low = 0.00
+        """
+        the lowest price reached in this interval
+        :type low: float
+        """
+        self.low = 0.00
 
-    """
-    the price at the end of this interval
-    :type close: float
-    """
-    close = 0.00
+        """
+        the price at the end of this interval
+        :type close: float
+        """
+        self.close = 0.00
 
-    """
-    the number of shares traded in this interval
-    :type volume: int
-    """
-    volume = 0
+        """
+        the number of shares traded in this interval
+        :type volume: int
+        """
+        self.volume = 0
 
     def to_vector(self):
         """
