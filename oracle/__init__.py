@@ -11,10 +11,10 @@ _oracle_checkpoint_format_ = "weights-{epoch:02d}-{loss:.4f}.hdf5"
 SEQUENCE_LEN = 20
 HIDDEN_LAYER = 2048
 EPOCHS = 50
-BATCH_SIZE = 32
+BATCH_SIZE = 128
 
 
-def _format_daily_data_(raw_json):
+def _format_daily_(data):
     """
     formats the time series data for a ticker symbol into the X and Y for a LSTM model
     :param raw_json: {
@@ -35,40 +35,10 @@ def _format_daily_data_(raw_json):
     """
     print("formatting time series data for LSTM model")
     x, y = list(), list()
-
-    for symbol, dates in raw_json.items():
-        _x, _y = list(), list()
-        for date, data in dates.items():
-            if len(_x) < SEQUENCE_LEN:
-                _x += [[float(data["1. open"]) / 25.00,
-                       float(data["2. high"]) / 25.00,
-                       float(data["3. low"]) / 25.00,
-                       float(data["4. close"]) / 25.00,
-                       int(data["5. volume"]) / 1000000000.0]]
-                if len(_x) > 1:
-                    _y += [[float(data["1. open"]) / 25.00,
-                           float(data["2. high"]) / 25.00,
-                           float(data["3. low"]) / 25.00,
-                           float(data["4. close"]) / 25.00,
-                           int(data["5. volume"]) / 1000000000.0]]
-
-            else:
-                x += [_x]
-
-                _y += [[float(data["1. open"]) / 25.00,
-                       float(data["2. high"]) / 25.00,
-                       float(data["3. low"]) / 25.00,
-                       float(data["4. close"]) / 25.00,
-                       int(data["5. volume"]) / 1000000000.0]]
-                y += [_y]
-
-                _x = [[float(data["1. open"]) / 25.00,
-                      float(data["2. high"]) / 25.00,
-                      float(data["3. low"]) / 25.00,
-                      float(data["4. close"]) / 25.00,
-                      int(data["5. volume"]) / 1000000000.0]]
-                _y = list()
-
+    for symbol, _data in data.items():
+        _x, _y = _data.get_input_output(SEQUENCE_LEN, SEQUENCE_LEN)
+        x += _x
+        y += _y
     return numpy.array(x), numpy.array(y)
 
 
@@ -113,7 +83,7 @@ def train():
 
     :return:
     """
-    x, y = _format_daily_data_(DAILY)
+    x, y = _format_daily_(DAILY)
     model = _build_model_(x, y)
 
     # define the checkpoint
