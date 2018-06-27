@@ -24,7 +24,7 @@ def _load_(tickers=list()):
                 for d in data["data"]:
                     if not any(d["ticker"] == t["ticker"] for t in tickers):
                         tickers += [d]
-    _download_(tickers)
+    tickers = _download_(tickers)
     _save_(tickers)
     return tickers
 
