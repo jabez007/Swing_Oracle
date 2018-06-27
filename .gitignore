@@ -107,4 +107,4 @@ venv.bak/
 .idea/
 venv/
 app.config
-.hdf5
+*.hdf5
