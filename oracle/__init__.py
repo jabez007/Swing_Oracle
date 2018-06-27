@@ -96,3 +96,7 @@ def train():
 
     # fit the model
     model.fit(x, y, epochs=EPOCHS, batch_size=BATCH_SIZE, callbacks=callbacks_list)  # Tune the batch size
+
+    
+def forecast(symbol):
+    pass
