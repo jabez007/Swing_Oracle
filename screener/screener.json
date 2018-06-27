@@ -1837,5 +1837,12 @@
         "marketcap": 1985506840.0,
         "average_daily_volume": 8300992.0,
         "ticker": "NBR"
+    },
+    {
+        "52_week_low": 1.86,
+        "52_week_high": 7.3,
+        "marketcap": 316933707.2,
+        "average_daily_volume": 4166249.0,
+        "ticker": "AMRS"
     }
 ]
