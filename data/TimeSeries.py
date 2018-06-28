@@ -71,10 +71,8 @@ class TimeSeries(object):
         return x, y
 
     def get_seed(self, x_size):
-        start_date = _calendar_.addbusdays(datetime.now(), -x_size).strftime("%Y-%m-%d")
-        start_index = self._datetimeStamps_.index(start_date)
-        return [self._intervals_[d].to_vector()
-                for d in self._datetimeStamps_[start_index: start_index + x_size]]
+        start_index = self._datetimeStamps_.index(_calendar_.addbusdays(datetime.now(), -x_size).strftime("%Y-%m-%d"))
+        return [self._intervals_[d].to_vector() for d in self._datetimeStamps_[start_index: start_index + x_size]]
 
     @staticmethod
     def from_json(symbol, json_data):
