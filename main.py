@@ -16,7 +16,10 @@ if len(sys.argv) == 2:
             oracle.forecast(t["ticker"])
     else:
         print("Getting latest for " + sys_argv)
-        x, y = DAILY[sys_argv].get_input_output(20, 1)
-        pprint(y[-1])
+        x = DAILY[sys_argv].get_seed(20)
+        pprint(x)
 else:
     print("No option given")
+    x = DAILY["PLUG"].get_seed(20)
+    pprint(x)
+    print(len(x))

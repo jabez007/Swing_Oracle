@@ -1,4 +1,39 @@
+from business_calendar import Calendar
+from datetime import datetime
 from .IntervalData import IntervalData
+
+_holidays_ = [  # https://www.nyse.com/markets/hours-calendars
+    "2018-01-01",  # New Years
+    "2018-01-15",  # MLK day
+    "2018-02-19",  # Washington's birthday
+    "2018-03-30",  # Good Friday
+    "2018-05-28",  # Memorial day
+    "2018-07-04",  # Independence day
+    "2018-09-03",  # Labor day
+    "2018-11-22",  # Thanksgiving day
+    "2018-12-25",  # Christmas
+    ####
+    "2019-01-01",  # New Years
+    "2019-01-21",  # MLK day
+    "2019-02-18",  # Washington's birthday
+    "2019-04-19",  # Good Friday
+    "2019-05-27",  # Memorial day
+    "2019-07-04",  # Independence day
+    "2019-09-02",  # Labor day
+    "2019-11-28",  # Thanksgiving day
+    "2019-12-25",  # Christmas
+    ####
+    "2020-01-01",  # New Years
+    "2020-01-20",  # MLK day
+    "2020-02-17",  # Washington's birthday
+    "2020-04-10",  # Good Friday
+    "2020-05-25",  # Memorial day
+    "2020-07-03",  # Independence day
+    "2020-09-07",  # Labor day
+    "2020-11-26",  # Thanksgiving day
+    "2020-12-25",  # Christmas
+]
+_calendar_ = Calendar(holidays=_holidays_)
 
 
 class TimeSeries(object):
@@ -34,6 +69,12 @@ class TimeSeries(object):
         y = [[self._intervals_[d].to_vector() for d in self._datetimeStamps_[i + x_size: i + x_size + y_size]]
              for i in range(len(self._datetimeStamps_) - (x_size + y_size))]
         return x, y
+
+    def get_seed(self, x_size):
+        start_date = _calendar_.addbusdays(datetime.now(), -x_size).strftime("%Y-%m-%d")
+        start_index = self._datetimeStamps_.index(start_date)
+        return [self._intervals_[d].to_vector()
+                for d in self._datetimeStamps_[start_index: start_index + x_size]]
 
     @staticmethod
     def from_json(symbol, json_data):

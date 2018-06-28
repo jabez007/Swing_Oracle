@@ -41,7 +41,7 @@ def _load_daily_(tickers):
         for date in list(dates.keys()):
             if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
                 del dates[date]
-    # '''
+    '''
     for t in tickers:
         _daily_data = _download_daily_100_(t["ticker"])
         sleep(2)  # slow it down so we don't hit a rate limit
