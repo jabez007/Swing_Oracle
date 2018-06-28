@@ -94,3 +94,22 @@ class TimeSeries(object):
             time_series._intervals_[date_time] = IntervalData.from_json(symbol, date_time, data)
         time_series._datetimeStamps_ = sorted(time_series._datetimeStamps_)
         return time_series
+
+    @staticmethod
+    def from_forecast(symbol, forecast):
+        """
+
+        :param symbol:
+        :param forecast:
+        :return:
+        """
+        time_series = TimeSeries()
+        time_series.ticker = symbol
+        date_time = datetime.now()
+        for data in forecast:
+            date_time = _calendar_.addbusdays(date_time, 1)
+            time_series._datetimeStamps_ += [date_time.strftime("%Y-%m-%d")]
+            time_series._intervals_[date_time.strftime("%Y-%m-%d")] = IntervalData.from_forecast(symbol,
+                                                                                                 date_time, data)
+        time_series._datetimeStamps_ = sorted(time_series._datetimeStamps_)
+        return time_series

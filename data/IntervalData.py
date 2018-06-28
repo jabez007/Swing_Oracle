@@ -83,3 +83,22 @@ class IntervalData(object):
         interval_data.close = float(json_data["4. close"])
         interval_data.volume = int(json_data["5. volume"])
         return interval_data
+
+    @staticmethod
+    def from_forecast(symbol, datetime_stamp, forecast_data):
+        """
+
+        :param symbol:
+        :param datetime_stamp:
+        :param forecast_data:
+        :return:
+        """
+        interval_data = IntervalData()
+        interval_data.ticker = symbol
+        interval_data.datetimeStamp = datetime_stamp
+        interval_data.open = forecast_data[0] * 25.00
+        interval_data.high = forecast_data[1] * 25.00
+        interval_data.low = forecast_data[2] * 25.00
+        interval_data.close = forecast_data[3] * 25.00
+        interval_data.volume = forecast_data[4] * 1000000000.0
+        return interval_data

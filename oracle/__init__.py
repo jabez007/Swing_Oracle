@@ -1,4 +1,4 @@
-from data import DAILY
+from data import DAILY, TimeSeries
 from keras.callbacks import ModelCheckpoint
 from keras.layers import Activation, Dense, Dropout, LSTM
 from keras.models import Sequential
@@ -17,7 +17,7 @@ BATCH_SIZE = 128
 def _format_daily_(data):
     """
     formats the time series data for a ticker symbol into the X and Y for a LSTM model
-    :param raw_json: {
+    :param data: {
                         "ABC": {
                             "2018-06-17": {
                             },
@@ -99,4 +99,15 @@ def train():
 
     
 def forecast(symbol):
-    pass
+    """
+
+    :param symbol:
+    :return:
+    """
+    x, y = _format_daily_(DAILY)
+    model = _build_model_(x, y)
+
+    seed = DAILY[symbol].get_seed(SEQUENCE_LEN)
+    _forecast = model.predict(numpy.array(seed), verbose=0)
+
+    return TimeSeries.from_forecast(symbol, _forecast)
