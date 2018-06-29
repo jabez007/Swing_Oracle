@@ -86,7 +86,7 @@ class TimeSeries(object):
 
     def get_title(self):
         return "{ticker}({gain:.2f}%): {start} to {end}".format(ticker=self.ticker,
-                                                                gain=self.get_max_gain(),
+                                                                gain=self.get_max_gain() * 100,
                                                                 start=self._datetimeStamps_[0],
                                                                 end=self._datetimeStamps_[-1])
 
