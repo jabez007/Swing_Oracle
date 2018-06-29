@@ -1,4 +1,4 @@
-from business_calendar import Calendar
+from business_calendar import Calendar, PREVIOUS
 from datetime import datetime
 from .IntervalData import IntervalData
 
@@ -133,11 +133,15 @@ class TimeSeries(object):
         """
         time_series = TimeSeries()
         time_series.ticker = symbol
-        date_time = datetime.now()
+        '''
+        since the construction of DAILY ignores data from today's date (so as not to use incomplete data)
+        the forecast will technically start on today's date or the latest business date
+        '''
+        date_time = _calendar_.adjust(datetime.now(), PREVIOUS)
         for data in forecast:
-            date_time = _calendar_.addbusdays(date_time, 1)
             time_series._datetimeStamps_ += [date_time.strftime("%Y-%m-%d")]
             time_series._intervals_[date_time.strftime("%Y-%m-%d")] = IntervalData.from_forecast(symbol,
                                                                                                  date_time, data)
+            date_time = _calendar_.addbusdays(date_time, 1)
         time_series._datetimeStamps_ = sorted(time_series._datetimeStamps_)
         return time_series
