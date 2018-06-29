@@ -1858,5 +1858,12 @@
         "marketcap": 1976940480.0,
         "average_daily_volume": 1289803.0,
         "ticker": "BLMN"
+    },
+    {
+        "52_week_low": 12.755,
+        "52_week_high": 19.62,
+        "marketcap": 1987062000.0,
+        "average_daily_volume": 1006296.0,
+        "ticker": "TTMI"
     }
 ]

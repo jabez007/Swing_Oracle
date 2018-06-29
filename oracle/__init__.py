@@ -4,6 +4,7 @@ from keras.layers import Activation, Dense, Dropout, LSTM
 from keras.models import Sequential
 import numpy
 import os
+from . import Plot
 from pprint import pprint
 
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))

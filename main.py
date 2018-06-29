@@ -16,15 +16,9 @@ if len(sys.argv) == 2:
             print("Running forecast for " + t["ticker"])
             forecast = oracle.get_forecast(t["ticker"])
             if forecast is not None:
-                gain = forecast.get_max_gain()
-                if gain >= 0.1:
-                    print("\twinner:",
-                          "${0:.2f}".format(forecast.get_open()),
-                          "${0:.2f}".format(forecast.get_high()),
-                          "${0:.2f}".format(forecast.get_low()),
-                          "${0:.2f}".format(forecast.get_close()),
-                          "{0:.2f}%".format(gain * 100))
-            # input("Press Enter to continue...")
+                if forecast.get_max_gain() >= 0.1:
+                    oracle.Plot.from_timeseries(forecast)
+                    input("Press Enter to continue...")
     else:
         print("-- Getting latest for " + sys_argv)
         x = DAILY[sys_argv].get_seed(20)

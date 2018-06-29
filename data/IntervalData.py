@@ -1,4 +1,5 @@
 from datetime import datetime
+import matplotlib.dates as mdates
 
 
 class IntervalData(object):
@@ -58,6 +59,17 @@ class IntervalData(object):
                 self.low / 25.00,
                 self.close / 25.00,
                 self.volume / 1000000000.0]
+
+    def to_plot(self):
+        """
+        gives the ohlc for this interval to be plotted on a candlestick chart
+        :return: [date, open, high, low, close]
+        """
+        return [mdates.date2num(self.datetimeStamp),
+                self.open,
+                self.high,
+                self.low,
+                self.close]
 
     @staticmethod
     def from_json(symbol, datetime_stamp, json_data):

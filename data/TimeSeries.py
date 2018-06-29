@@ -1,6 +1,7 @@
+from .IntervalData import IntervalData
 from business_calendar import Calendar, PREVIOUS
 from datetime import datetime
-from .IntervalData import IntervalData
+import matplotlib.dates as mdates
 
 _holidays_ = [  # https://www.nyse.com/markets/hours-calendars
     "2018-01-01",  # New Years
@@ -75,6 +76,19 @@ class TimeSeries(object):
         if start_date in self._datetimeStamps_:
             start_index = self._datetimeStamps_.index(start_date)
             return [self._intervals_[d].to_vector() for d in self._datetimeStamps_[start_index: start_index + x_size]]
+
+    def get_plot(self):
+        return [self._intervals_[d].to_plot() for d in self._datetimeStamps_]
+
+    def get_volumes(self):
+        return [mdates.date2num(self._intervals_[d].datetimeStamp) for d in self._datetimeStamps_], \
+               [self._intervals_[d].volume for d in self._datetimeStamps_]
+
+    def get_title(self):
+        return "{ticker}({gain:.2f}%): {start} to {end}".format(ticker=self.ticker,
+                                                                gain=self.get_max_gain(),
+                                                                start=self._datetimeStamps_[0],
+                                                                end=self._datetimeStamps_[-1])
 
     def get_open(self):
         return self._intervals_[self._datetimeStamps_[0]].open
