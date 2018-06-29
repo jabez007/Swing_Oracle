@@ -2,8 +2,9 @@ from data import DAILY, TimeSeries
 from keras.callbacks import ModelCheckpoint
 from keras.layers import Activation, Dense, Dropout, LSTM
 from keras.models import Sequential
-import os
 import numpy
+import os
+from pprint import pprint
 
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
 _oracle_checkpoint_format_ = "weights-{epoch:02d}-{loss:.4f}.hdf5"
@@ -33,7 +34,7 @@ def _format_daily_(data):
                      }
     :return: x and y for the input and output of a LSTM model
     """
-    print("formatting time series data for LSTM model")
+    print("-- Formatting time series data for LSTM model")
     x, y = list(), list()
     for symbol, _data in data.items():
         _x, _y = _data.get_input_output(SEQUENCE_LEN, SEQUENCE_LEN)
@@ -51,7 +52,7 @@ def _build_model_(x, y):
     :param y:
     :return:
     """
-    print("building LSTM model")
+    print("-- Building LSTM model")
     model = Sequential()
     model.add(LSTM(HIDDEN_LAYER, input_shape=(x.shape[1], x.shape[2]), return_sequences=True))
     model.add(Dropout(0.3))
@@ -78,14 +79,15 @@ def _build_model_(x, y):
     return model
 
 
+_x_, _y_ = _format_daily_(DAILY)
+_model_ = _build_model_(_x_, _y_)
+
+
 def train():
     """
 
     :return:
     """
-    x, y = _format_daily_(DAILY)
-    model = _build_model_(x, y)
-
     # define the checkpoint
     checkpoint = ModelCheckpoint(os.path.join(_oracle_path_, _oracle_checkpoint_format_),
                                  monitor='loss',
@@ -95,19 +97,19 @@ def train():
     callbacks_list = [checkpoint]
 
     # fit the model
-    model.fit(x, y, epochs=EPOCHS, batch_size=BATCH_SIZE, callbacks=callbacks_list)  # Tune the batch size
+    _model_.fit(_x_, _y_, epochs=EPOCHS, batch_size=BATCH_SIZE, callbacks=callbacks_list)  # Tune the batch size
 
     
-def forecast(symbol):
+def get_forecast(symbol):
     """
 
     :param symbol:
     :return:
     """
-    x, y = _format_daily_(DAILY)
-    model = _build_model_(x, y)
-
-    seed = DAILY[symbol].get_seed(SEQUENCE_LEN)
-    _forecast = model.predict(numpy.array(seed), verbose=0)
-
-    return TimeSeries.from_forecast(symbol, _forecast)
+    if symbol in DAILY.keys():
+        _seed = DAILY[symbol].get_seed(SEQUENCE_LEN)
+        seed = numpy.array([_seed])
+        if len(seed.shape) == 3 and seed.shape[1] == 20:
+            _forecast = _model_.predict(seed, verbose=0)
+            # pprint(_forecast[0])
+            return TimeSeries.from_forecast(symbol, _forecast[0])

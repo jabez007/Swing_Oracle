@@ -1844,5 +1844,19 @@
         "marketcap": 316933707.2,
         "average_daily_volume": 4166249.0,
         "ticker": "AMRS"
+    },
+    {
+        "52_week_low": 6.93,
+        "52_week_high": 13.02,
+        "marketcap": 1472420000.0,
+        "average_daily_volume": 2739503.0,
+        "ticker": "ADT"
+    },
+    {
+        "52_week_low": 16.11,
+        "52_week_high": 25.0,
+        "marketcap": 1976940480.0,
+        "average_daily_volume": 1289803.0,
+        "ticker": "BLMN"
     }
 ]

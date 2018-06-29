@@ -13,7 +13,7 @@ def _load_(tickers=list()):
     :param tickers: any already loaded or downloaded ticker symbols
     :return: the list of locally cached ticker symbols
     """
-    print("loading ticker symbols that meet our search criteria")
+    print("-- Loading ticker symbols that meet our search criteria")
     for f in os.listdir(_screener_path_):
         if f.endswith(".json"):
             with open(os.path.join(_screener_path_, f)) as f_json:

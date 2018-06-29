@@ -32,7 +32,7 @@ def _load_daily_(tickers):
                 }
              }
     """
-    print("loading time series data for each of our ticker symbols")
+    print("-- Loading time series data for each of our ticker symbols")
     with open(_daily_json_) as daily_json:
         daily_data = json.load(daily_json)
 
