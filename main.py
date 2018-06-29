@@ -16,10 +16,14 @@ if len(sys.argv) == 2:
             print("Running forecast for " + t["ticker"])
             forecast = oracle.get_forecast(t["ticker"])
             if forecast is not None:
-                if ((forecast.get_high() - forecast.get_open()) / forecast.get_open()) >= 0.1:
-                    print("\twinner:", forecast.get_open(), forecast.get_high())
-                if ((forecast.get_low() - forecast.get_open()) / forecast.get_open()) <= -0.1:
-                    print("\tloser:", forecast.get_open(), forecast.get_low())
+                gain = forecast.get_max_gain()
+                if gain >= 0.1:
+                    print("\twinner:",
+                          "${0:.2f}".format(forecast.get_open()),
+                          "${0:.2f}".format(forecast.get_high()),
+                          "${0:.2f}".format(forecast.get_low()),
+                          "${0:.2f}".format(forecast.get_close()),
+                          "{0:.2f}%".format(gain * 100))
             # input("Press Enter to continue...")
     else:
         print("-- Getting latest for " + sys_argv)

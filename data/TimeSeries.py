@@ -88,6 +88,20 @@ class TimeSeries(object):
     def get_close(self):
         return self._intervals_[self._datetimeStamps_[-1]].close
 
+    def get_max_gain(self):
+        """
+        find the Interval where the highest price is reached,
+        then find the Interval before that where the lowest price is reached.
+        From there, calculate the percent return.
+        :return:
+        """
+        high_datapoint = max(self._intervals_.values(), key=lambda x: x.high)
+        high_datetime = high_datapoint.datetimeStamp.strftime("%Y-%m-%d")
+        high_index = self._datetimeStamps_.index(high_datetime)
+        datetimes_subset = self._datetimeStamps_[:high_index + 1]  # include the interval with the high
+        low_datapoint = min([self._intervals_[d] for d in datetimes_subset], key=lambda x: x.low)
+        return (high_datapoint.high - low_datapoint.low) / low_datapoint.low
+
     @staticmethod
     def from_json(symbol, json_data):
         """
