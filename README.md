@@ -10,6 +10,7 @@ under $25 and possible [swing trades](https://www.eatsleeptrade.net/my-swing-tra
     identified stocks.
   * [Python source](https://github.com/RomelTorres/alpha_vantage)
 * [Deep Learning with Keras](https://app.pluralsight.com/library/courses/keras-deep-learning/table-of-contents)
+  * [TensorFlow: Getting Started](https://app.pluralsight.com/library/courses/tensorflow-getting-started/table-of-contents)
 
 ## Outline
 
