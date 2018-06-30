@@ -7,6 +7,8 @@ import os
 from . import Plot
 from pprint import pprint
 
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # disable the verbose output from TensorFlow starting up
+
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
 _oracle_checkpoint_format_ = "weights-{epoch:02d}-{loss:.4f}.hdf5"
 
