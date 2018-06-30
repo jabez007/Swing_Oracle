@@ -1,7 +1,7 @@
 from data import DAILY, TimeSeries
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.layers import Activation, Dense, Dropout, LSTM
-from keras.models import Sequential
+from keras.models import Sequential, load_model
 import numpy
 import os
 from . import Plot
@@ -61,8 +61,6 @@ def _build_model_(inputs,
     :return:
     """
     print("-- Building LSTM model")
-    model = Sequential()
-    
     # load previous model if it exists
     accuracy = 0
     filename = ""
@@ -72,8 +70,9 @@ def _build_model_(inputs,
                 filename = f
     if filename != "":
         print("checkpoint file: " + filename)
-        model.load(os.path.join(_oracle_path_, filename))
+        model = load_model(os.path.join(_oracle_path_, filename))
     else:
+        model = Sequential()
         model.add(LSTM(neurons, 
                        input_shape=(inputs.shape[1], inputs.shape[2]), 
                        return_sequences=True,
