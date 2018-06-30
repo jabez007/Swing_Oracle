@@ -1,7 +1,6 @@
 from .IntervalData import IntervalData
-from business_calendar import Calendar, PREVIOUS
+from business_calendar import Calendar, PREVIOUS, FOLLOWING
 from datetime import datetime
-import matplotlib.dates as mdates
 
 _holidays_ = [  # https://www.nyse.com/markets/hours-calendars
     "2018-01-01",  # New Years
@@ -80,10 +79,6 @@ class TimeSeries(object):
     def get_plot(self):
         return [self._intervals_[d].to_plot() for d in self._datetimeStamps_]
 
-    def get_volumes(self):
-        return [mdates.date2num(self._intervals_[d].datetimeStamp) for d in self._datetimeStamps_], \
-               [self._intervals_[d].volume for d in self._datetimeStamps_]
-
     def get_title(self):
         return "{ticker}({gain:.2f}%): {start} to {end}".format(ticker=self.ticker,
                                                                 gain=self.get_max_gain() * 100,
@@ -149,13 +144,22 @@ class TimeSeries(object):
         time_series.ticker = symbol
         '''
         since the construction of DAILY ignores data from today's date (so as not to use incomplete data)
-        the forecast will technically start on today's date or the latest business date
+        the forecast will technically start on today's date or the next business date
         '''
-        date_time = _calendar_.adjust(datetime.now(), PREVIOUS)
+        if _calendar_.isbusday(datetime.now()):
+            # if this runs on a weekday, we wont have the data for that weekday in the seed
+            # so the first date of the forecast will be that weekday
+            date_time = _calendar_.adjust(datetime.now(), PREVIOUS)
+        else:
+            # if this runs on a weekend, we should have all of the data up to that date
+            # so the first date of the forecast will be the next weekday
+            date_time = _calendar_.adjust(datetime.now(), FOLLOWING)
+        
         for data in forecast:
             time_series._datetimeStamps_ += [date_time.strftime("%Y-%m-%d")]
             time_series._intervals_[date_time.strftime("%Y-%m-%d")] = IntervalData.from_forecast(symbol,
                                                                                                  date_time, data)
             date_time = _calendar_.addbusdays(date_time, 1)
+        
         time_series._datetimeStamps_ = sorted(time_series._datetimeStamps_)
         return time_series
