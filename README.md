@@ -45,9 +45,8 @@ pull the last 100 days worths of data from Alpha Vantage
 https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={apikey}
 ```
 From there, we will take only the last 20 days of data from each ticker
-to seed our model and run the forecast for the next 10 days. We will run
-the forecast 30 times for each ticker and create a distribution to then
-analyze for potential [long term swing trades](http://www.swing-trade-stocks.com/trading-strategy.html).
+to seed our model and run a forecast for the next 20 days. We will then
+plot and analyze the forecasts looking for potential [long term swing trades](http://www.swing-trade-stocks.com/trading-strategy.html).
 
 ## Technical
 
