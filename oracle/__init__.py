@@ -12,6 +12,8 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # disable the verbose output from Tens
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
 _oracle_checkpoint_format_ = "model-{epoch:02d}-{accuracy:.4f}.hdf5"
 
+SEQUENCE_LEN = 20
+OUTPUT_LEN = 1
 EPOCHS = 50
 BATCH_SIZE = 128
 
@@ -87,14 +89,14 @@ def _build_model_(inputs,
         model.add(Dropout(dropout))
         model.add(Dense(units=output_size))
         model.add(Activation(activation_function))
-        model.compile(loss=loss, optimizer=optimizer, metrics=['accuracy'])
     
+    model.compile(loss=loss, optimizer=optimizer, metrics=['accuracy'])
     model.summary()
     return model
 
 
-_x_, _y_ = _format_input_output_(DAILY)
-_model_ = _build_model_(_x_)
+_x_, _y_ = _format_input_output_(DAILY, SEQUENCE_LEN, OUTPUT_LEN)
+_model_ = _build_model_(_x_, OUTPUT_LEN)
 
 
 def train():
@@ -118,16 +120,20 @@ def train():
     _model_.fit(_x_, _y_, epochs=EPOCHS, batch_size=BATCH_SIZE, callbacks=callbacks_list)  # Tune the batch size
 
     
-def get_forecast(symbol):
+def get_forecast(symbol, outlook_len=20):
     """
 
     :param symbol:
     :return:
     """
+    outlook = list()
+    
     if symbol in DAILY.keys():
         _seed = DAILY[symbol].get_seed(SEQUENCE_LEN)
         seed = numpy.array([_seed])
-        if len(seed.shape) == 3 and seed.shape[1] == 20:
-            _forecast = _model_.predict(seed, verbose=0)
-            # pprint(_forecast[0])
-            return TimeSeries.from_forecast(symbol, _forecast[0])
+        if len(seed.shape) == 3 and seed.shape[1] == SEQUENCE_LEN:
+            while len(outlook) < outlook_len:
+                _forecast = _model_.predict(seed, verbose=0)
+                outlook += _forcast[0].tolist()
+                seed = numpy.array([(_seed + outlook)[-SEQUENCE_LEN:]])
+            return TimeSeries.from_forecast(symbol, outlook)
