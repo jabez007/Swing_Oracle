@@ -29,7 +29,7 @@ With that list of tickers, we will go through each one to pull the last
 https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={apikey}
 ```
 And those 100 days will then be split on a `Sequence Size` of 20 to
-train our Recurrent Neural Network [LSTM](https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/) model
+train our Recurrent Neural Network [LSTM](https://dashee87.github.io/deep%20learning/python/predicting-cryptocurrency-prices-with-deep-learning/) model
 
 ### Forecasting
 Here we will again use the screener API to search for securities that 
@@ -51,6 +51,7 @@ plot and analyze the forecasts looking for potential [long term swing trades](ht
 ## Technical
 
 ### Training
+* [Predict Bitcoin and Ethereum price with LSTM in Keras](https://medium.com/@siavash_37715/how-to-predict-bitcoin-and-ethereum-price-with-rnn-lstm-in-keras-a6d8ee8a5109)
 
 #### [Number of Layers](https://www.heatonresearch.com/2017/06/01/hidden-layers.html)
 * 2 -> Can represent an arbitrary decision boundary to arbitrary accuracy with rational activation functions and can approximate any smooth mapping to any accuracy.
@@ -60,3 +61,19 @@ plot and analyze the forecasts looking for potential [long term swing trades](ht
 * The number of hidden neurons should be between the size of the input layer and the size of the output layer.
 * The number of hidden neurons should be 2/3 the size of the input layer, plus the size of the output layer.
 * The number of hidden neurons should be less than twice the size of the input layer.
+
+Since our input is going to be (20, 5) and our output is (1, 5), it seems like our number of neurons should be in the 128 to 256 range.
+We can bump up the number of neurons to the 512 to 1024 range as long as we include `Dropout` layers to avoid overfitting.
+
+#### [Activation Function](https://datascience.stackexchange.com/questions/14349/difference-of-activation-functions-in-neural-networks-in-general)
+* linear
+* tanh -> squashes a real-valued number to the range [-1, 1] so its output is zero-centered.
+* ReLU (leaky Rectified Linear Unit) -> this function computes f(x)=1(x<0)(αx)+1(x>=0)(x) where α is a small constant.
+
+#### [loss](https://keras.io/losses/)
+* mean squared error (mse) ->
+* mean absolute error (mae) ->
+* mean absolute percentage error (mape) -> we want to minimize the percentages that our true is off from our prediction
+
+#### [optimizer](https://keras.io/optimizers/)
+* adam
