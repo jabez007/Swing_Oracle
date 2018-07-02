@@ -7,7 +7,6 @@ import numpy
 import os
 import random
 
-
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # disable the verbose output from TensorFlow starting up
 
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
