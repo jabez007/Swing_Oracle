@@ -14,11 +14,12 @@ _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
 _oracle_checkpoint_format_ = "model-epoch{epoch:02d}-{val_acc:.4f}.hdf5"
 
 SEQUENCE_LEN = 20
+VAL_SPLIT = 0.3
 EPOCHS = 50
 BATCH_SIZE = 64
 
 
-def _format_input_output_(data, input_size=20):
+def _format_input_output_(data, input_size=20, validation_split=0.3):
     """
     formats the time series data for a ticker symbol into the X and Y for a LSTM model
     input.shape = (number_inputs, input_size, 5)
@@ -41,12 +42,16 @@ def _format_input_output_(data, input_size=20):
     :return: x and y for the input and output of a LSTM model
     """
     print("-- Formatting time series data for LSTM model")
-    x, y = list(), list()
+    x, y, x_val, y_val = list(), list(), list(), list()
     for symbol, _data in random.shuffle(list(data.items())):
         _x, _y = _data.get_input_output(input_size, input_size)
-        x += _x
-        y += _y
-    return numpy.array(x), numpy.array(y)
+        if random.random() < validation_split:
+            x_val += _x
+            y_val += _y
+        else:
+            x += _x
+            y += _y
+    return numpy.array(x), numpy.array(y), numpy.array(x_val), numpy.array(y_val)
 
 
 def _build_model_(inputs, neurons=1024, activation_function="tanh", dropout=0.3, loss="mse", optimizer="adam"):
@@ -99,7 +104,7 @@ def _build_model_(inputs, neurons=1024, activation_function="tanh", dropout=0.3,
     return model
 
 
-_x_, _y_ = _format_input_output_(DAILY, SEQUENCE_LEN)
+_x_, _y_, _x_val_, _y_val_ = _format_input_output_(DAILY, SEQUENCE_LEN, VAL_SPLIT)
 _model_ = _build_model_(_x_)
 
 
@@ -122,7 +127,7 @@ def train():
 
     # fit the model
     _model_.fit(_x_, _y_,
-                validation_split=0.3,
+                validation_data=(_x_val_, _y_val_),
                 epochs=EPOCHS,
                 batch_size=BATCH_SIZE,
                 callbacks=callbacks_list)
