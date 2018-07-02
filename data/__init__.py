@@ -137,7 +137,7 @@ def _save_daily_(daily_data):
     """
     with open(_daily_json_, 'w') as daily_json:
         json.dump(daily_data, daily_json, 
-                  indent=4, sort_keys=true)
+                  indent=4, sort_keys=True)
 
 
 DAILY = _load_daily_(TICKERS)

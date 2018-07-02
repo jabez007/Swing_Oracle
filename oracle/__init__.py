@@ -10,7 +10,7 @@ import random
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # disable the verbose output from TensorFlow starting up
 
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
-_oracle_checkpoint_format_ = "model-epoch{epoch:02d}-{val_acc:.4f}.hdf5"
+_oracle_checkpoint_format_ = "model-epoch{epoch:02d}-{val_acc:.4f}-{acc:.4f}.hdf5"
 
 SEQUENCE_LEN = 20
 VAL_SPLIT = 0.3
@@ -43,7 +43,10 @@ def _format_input_output_(data, input_size=20, validation_split=0.3):
     """
     print("-- Formatting time series data for LSTM model")
     x, y, x_val, y_val = list(), list(), list(), list()
-    for symbol, _data in random.shuffle(list(data.items())):
+
+    data_items = list(data.items())
+    random.shuffle(data_items)
+    for symbol, _data in data_items:
         _x, _y = _data.get_input_output(input_size, input_size)
         if random.random() < validation_split:
             x_val += _x
@@ -51,10 +54,11 @@ def _format_input_output_(data, input_size=20, validation_split=0.3):
         else:
             x += _x
             y += _y
+
     return numpy.array(x), numpy.array(y), numpy.array(x_val), numpy.array(y_val)
 
 
-def _build_model_(inputs, neurons=1024, activation_function="tanh", dropout=0.3, loss="mse", optimizer="adam"):
+def _build_model_(inputs, neurons=1024, activation_function="tanh", dropout=0.6, loss="mse", optimizer="adam"):
     """
     define the LSTM model. Load the network weights from a previous run if available.
     https://www.kaggle.com/pablocastilla/predict-stock-prices-with-lstm
@@ -116,7 +120,7 @@ def train():
     # define the checkpoint
     checkpoint = ModelCheckpoint(os.path.join(_oracle_path_, _oracle_checkpoint_format_),
                                  monitor='val_acc',
-                                 save_best_only=True,
+                                 # save_best_only=True,
                                  mode='max')
     early_stop = EarlyStopping(monitor='val_acc',
                                min_delta=0.01,

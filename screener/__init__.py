@@ -60,7 +60,7 @@ def _save_(tickers):
     """
     with open(_screener_json_, 'w') as screener_json:
         json.dump(tickers, screener_json, 
-                  indent=4, sort_keys=true)
+                  indent=4, sort_keys=True)
 
 
 TICKERS = _load_()
