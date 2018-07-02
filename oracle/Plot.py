@@ -1,6 +1,6 @@
 # https://pythonprogramming.net/candlestick-ohlc-graph-matplotlib-tutorial/
 from matplotlib import style
-import  matplotlib.dates as mdates
+import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 from mpl_finance import candlestick_ohlc
@@ -30,4 +30,7 @@ def from_timeseries(forecast):
     plt.ylabel('Price')
     plt.title(forecast.get_title())
     plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2, hspace=0)
-    plt.show()
+    # plt.show()
+    fig.savefig("figure.png", bbox_inches='tight')
+    plt.close(fig)
+    return "figure.png"

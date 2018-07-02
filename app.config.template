@@ -3,5 +3,11 @@
     "api username": API_USERNAME,
     "api password": API_PASSWORD
   },
+  "twitter": {
+    "consumer key": "consumer_key",
+    "consumer secret": "consumer_secret",
+    "access token key": "access_token",
+    "access token secret": "access_token_secret"
+  },
   "alpha vantage": API_KEY
 }

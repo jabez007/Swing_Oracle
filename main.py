@@ -1,31 +1,41 @@
-﻿from data import DAILY
+﻿import configuration_manager
 import oracle
-from pprint import pprint
 from screener import TICKERS
 import sys
+import twitter
+
+
+def train():
+    print("-- Train option selected")
+    oracle.train()
+
+
+def forecast():
+    print("-- Forecast option selected")
+    tweet = twitter.Api(consumer_key=configuration_manager.AppSettings["twitter"]["consumer key"],
+                        consumer_secret=configuration_manager.AppSettings["twitter"]["consumer secret"],
+                        access_token_key=configuration_manager.AppSettings["twitter"]["access token key"],
+                        access_token_secret=configuration_manager.AppSettings["twitter"]["access token secret"])
+
+    for t in TICKERS:
+        print("Running forecast for " + t["ticker"])
+        _forecast = oracle.get_forecast(t["ticker"])
+        if _forecast is not None:
+            if _forecast.get_max_gain() >= 0.1:
+                figure = oracle.Plot.from_timeseries(_forecast)
+                tweet.PostUpdate(status=_forecast.get_title(),
+                                 media=figure)
+                # input("Press Enter to continue...")
+
 
 if len(sys.argv) == 2:
     sys_argv = str.upper(sys.argv[1])
-
     if sys_argv == "TRAIN":
-        print("-- Train option selected")
-        oracle.train()
+        train()
     elif sys_argv == "FORECAST":
-        print("-- Forecast option selected")
-        for t in TICKERS:
-            print("Running forecast for " + t["ticker"])
-            forecast = oracle.get_forecast(t["ticker"])
-            if forecast is not None:
-                if forecast.get_max_gain() >= 0.1:
-                    oracle.Plot.from_timeseries(forecast)
-                    input("Press Enter to continue...")
+        forecast()
     else:
-        print("-- Getting latest for " + sys_argv)
-        x = DAILY[sys_argv].get_seed(20)
-        pprint(x)
+        print("-- invalid option selected")
 else:
-    print("-- No option given")
-    print(DAILY["PLUG"].get_open())
-    print(DAILY["PLUG"].get_high())
-    print(DAILY["PLUG"].get_low())
-    print(DAILY["PLUG"].get_close())
+    train()
+    forecast()
