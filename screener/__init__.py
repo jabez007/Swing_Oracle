@@ -59,7 +59,8 @@ def _save_(tickers):
     :return:
     """
     with open(_screener_json_, 'w') as screener_json:
-        json.dump(tickers, screener_json, indent=4)
+        json.dump(tickers, screener_json, 
+                  indent=4, sort_keys=true)
 
 
 TICKERS = _load_()
