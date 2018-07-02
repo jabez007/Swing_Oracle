@@ -42,7 +42,7 @@ def _format_input_output_(data, input_size=20):
     """
     print("-- Formatting time series data for LSTM model")
     x, y = list(), list()
-    for symbol, _data in random.shuffle(data.items()):
+    for symbol, _data in random.shuffle(list(data.items())):
         _x, _y = _data.get_input_output(input_size, input_size)
         x += _x
         y += _y
