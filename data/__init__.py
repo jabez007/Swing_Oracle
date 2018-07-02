@@ -97,7 +97,8 @@ def _save_daily_(daily_data):
     :return:
     """
     with open(_daily_json_, 'w') as daily_json:
-        json.dump(daily_data, daily_json, indent=4)
+        json.dump(daily_data, daily_json, 
+                  indent=4, sort_keys=true)
 
 
 DAILY = _load_daily_(TICKERS)
