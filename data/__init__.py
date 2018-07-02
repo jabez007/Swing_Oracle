@@ -121,6 +121,14 @@ def _download_rsi_(symbol):
     return data
 
 
+def _download_minus_di_(symbol):
+    pass
+
+
+def _download_plus_di_(symbol):
+    pass
+
+
 def _save_daily_(daily_data):
     """
 
