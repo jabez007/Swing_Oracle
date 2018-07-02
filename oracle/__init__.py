@@ -1,10 +1,12 @@
+from . import Plot
 from data import DAILY, TimeSeries
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.layers import Dense, Dropout, LeakyReLU, LSTM
 from keras.models import Sequential, load_model
 import numpy
 import os
-from . import Plot
+import random
+
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # disable the verbose output from TensorFlow starting up
 
@@ -40,7 +42,7 @@ def _format_input_output_(data, input_size=20):
     """
     print("-- Formatting time series data for LSTM model")
     x, y = list(), list()
-    for symbol, _data in data.items():
+    for symbol, _data in random.shuffle(data.items()):
         _x, _y = _data.get_input_output(input_size, input_size)
         x += _x
         y += _y
