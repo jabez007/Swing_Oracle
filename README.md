@@ -68,7 +68,7 @@ We can bump up the number of neurons to the 512 to 1024 range as long as we incl
 #### [Activation Function](https://datascience.stackexchange.com/questions/14349/difference-of-activation-functions-in-neural-networks-in-general)
 * linear
 * tanh -> squashes a real-valued number to the range [-1, 1] so its output is zero-centered.
-* ReLU (leaky Rectified Linear Unit) -> this function computes f(x)=1(x<0)(αx)+1(x>=0)(x) where α is a small constant.
+* ReLU ([leaky Rectified Linear Unit](https://medium.com/@huangkh19951228/predicting-cryptocurrency-price-with-tensorflow-and-keras-e1674b0dc58a)) -> this function computes f(x)=1(x<0)(αx)+1(x>=0)(x) where α is a small constant.
 
 #### [loss](https://keras.io/losses/)
 * mean squared error (mse) ->
