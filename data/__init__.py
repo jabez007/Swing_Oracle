@@ -71,7 +71,7 @@ def _download_daily_100_(symbol):
                 "Daily": {
                     "2018-06-17": {
                     },
-                    "2018-06-08": {
+                    "2018-06-18": {
                     }
                 }
              }
@@ -86,6 +86,37 @@ def _download_daily_100_(symbol):
         if "Meta Data" in _data:
             data["Symbol"] = _data["Meta Data"]["2. Symbol"]
             data["Daily"] = OrderedDict(sorted(_data["Time Series (Daily)"].items()))
+
+    return data
+
+
+def _download_rsi_(symbol):
+    """
+    downloads the Relative Strength Index (RSI) time series of the given ticker symbol
+    The default time frame for comparing up periods to down periods is 14, as in 14 trading days
+    :param symbol:
+    :return: {
+                "Symbol": "ABC",
+                "RSI": {
+                    "2018-07-02": "",
+                    "2018-06-29": ""
+                }
+             }
+    """
+    data = {"Symbol": "",
+            "RSI": OrderedDict()}
+
+    r = requests.get(
+        "https://www.alphavantage.co/query?function=RSI&symbol=" + symbol + 
+        "&interval=daily&time_period=14&series_type=close" +
+        "&apikey=" + _api_key_)
+    if r.status_code < 400:
+        _data = r.json()
+        if "Meta Data" in _data:
+            data["Symbol"] = _data["Meta Data"]["1. Symbol"]
+            for date, rsi in _data["Meta Data"]["Technical Analysis: RSI"].items():
+                if len(date.split(" ")) == 1:  # the RSI for the current date will have a date and time
+                    data["RSI"][date] = rsi["RSI"]
 
     return data
 
