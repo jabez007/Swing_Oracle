@@ -23,7 +23,7 @@ def _format_input_output_(data, input_size=20, validation_split=0.3):
     """
     formats the time series data for a ticker symbol into the X and Y for a LSTM model
     input.shape = (number_inputs, input_size, 5)
-    output.shape = (number_inputs, 5)
+    output.shape = (number_inputs, input_size, 5)
     :param data: {
                         "ABC": {
                             "2018-06-17": {
@@ -39,6 +39,7 @@ def _format_input_output_(data, input_size=20, validation_split=0.3):
                         }
                      }
     :param input_size: the number of timestamps that make up the input
+    :param validation_split: the approximate percent of data to use for validation
     :return: x and y for the input and output of a LSTM model
     """
     print("-- Formatting time series data for LSTM model")
