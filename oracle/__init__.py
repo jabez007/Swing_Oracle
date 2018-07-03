@@ -141,7 +141,7 @@ def train():
                 callbacks=callbacks_list)
 
     
-def get_forecast(symbol, outlook_len=20):
+def get_forecast(symbol, outlook_len=SEQUENCE_LEN):
     """
 
     :param symbol:
