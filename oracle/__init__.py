@@ -12,7 +12,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # disable the verbose output from Tens
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
 _oracle_checkpoint_format_ = "model-epoch{epoch:02d}-{val_acc:.4f}-{acc:.4f}.hdf5"
 
-SEQUENCE_LEN = 10
+SEQUENCE_LEN = 5
 VAL_SPLIT = 0.3
 NEURONS = 512
 ACTIVATION = "tanh"
@@ -22,11 +22,11 @@ EPOCHS = 50
 BATCH_SIZE = 32
 
 
-def _format_input_output_(data, input_size=10, validation_split=0.3):
+def _format_input_output_(data, input_size=5, validation_split=0.3):
     """
     formats the time series data for a ticker symbol into the X and Y for a LSTM model
-    input.shape = (number_inputs, input_size, 5)
-    output.shape = (number_inputs, 1, 5)
+    input.shape = (number_inputs, input_size, number_features)
+    output.shape = (number_inputs, 1, number_features)
     :param data: {
                         "ABC": {
                             "2018-06-17": {
