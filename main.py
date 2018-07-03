@@ -1,5 +1,7 @@
 ﻿import configuration_manager
+from data import DAILY
 import oracle
+from pprint import pprint
 from screener import TICKERS
 import sys
 import twitter
@@ -37,5 +39,4 @@ if len(sys.argv) == 2:
     else:
         print("-- invalid option selected")
 else:
-    train()
-    forecast()
+    pprint(DAILY)

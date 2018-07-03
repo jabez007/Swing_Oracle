@@ -44,30 +44,32 @@ def _load_daily_(tickers):
             for date in list(dates.keys()):
                 if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
                     del dates[date]
-    '''
+
     for t in tickers:
-        _daily_data = _download_daily_100_(t["ticker"])
-        sleep(2)  # slow it down so we don't hit a rate limit
-        if len(_daily_data["Daily"]) <= 0:
-            continue
-        if t["ticker"] not in daily_data:
-            daily_data[t["ticker"]] = _daily_data["Daily"]
-        else:
-            for date in _daily_data["Daily"]:
-                if datetime.strptime(date, "%Y-%m-%d").date() == datetime.now().date():
-                    continue  # skip today's date so we don't pull in-progress data
-                if date not in daily_data[t["ticker"]]:
-                    daily_data[t["ticker"]][date] = _daily_data["Daily"][date]
-
-        _rsi_data = _download_rsi_(t["ticker"])
-        sleep(2)
-        for date, data in daily_data[t["ticker"]].items():
-            if date in _rsi_data["RSI"]:
-                daily_data[t["ticker"]][date]["RSI"] = _rsi_data["RSI"][date]
+        if t["ticker"] in daily_data:  # some of the tickers in the screener might not have data available
+            '''
+            _daily_data = _download_daily_100_(t["ticker"])
+            sleep(2)  # slow it down so we don't hit a rate limit
+            if len(_daily_data["Daily"]) <= 0:
+                continue
+            if t["ticker"] not in daily_data:
+                daily_data[t["ticker"]] = _daily_data["Daily"]
             else:
-                daily_data[t["ticker"]][date]["RSI"] = "0.00"
+                for date in _daily_data["Daily"]:
+                    if datetime.strptime(date, "%Y-%m-%d").date() == datetime.now().date():
+                        continue  # skip today's date so we don't pull in-progress data
+                    if date not in daily_data[t["ticker"]]:
+                        daily_data[t["ticker"]][date] = _daily_data["Daily"][date]
+            '''
+            _rsi_data = _download_rsi_(t["ticker"])
+            sleep(2)
+            for date, data in daily_data[t["ticker"]].items():
+                if date in _rsi_data["RSI"]:
+                    daily_data[t["ticker"]][date]["RSI"] = _rsi_data["RSI"][date]
+                else:
+                    daily_data[t["ticker"]][date]["RSI"] = "0.00"
 
-    # '''
+            # '''
     _save_daily_(daily_data)
 
     return dict([(ticker, TimeSeries.from_json(ticker, dates)) for ticker, dates in daily_data.items()
