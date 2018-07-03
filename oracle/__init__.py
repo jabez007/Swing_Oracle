@@ -166,6 +166,6 @@ def get_forecast(symbol, outlook_len=SEQUENCE_LEN):
         if len(seed.shape) == 3 and seed.shape[1] == SEQUENCE_LEN:
             while len(outlook) < outlook_len:
                 _forecast = _model_.predict(seed, verbose=0)
-                outlook += [_forecast[0].tolist()]
+                outlook += [_forecast[0][0].tolist()]
                 seed = numpy.array([(_seed + outlook)[-SEQUENCE_LEN:]])
             return TimeSeries.from_forecast(symbol, outlook)
