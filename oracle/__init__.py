@@ -129,15 +129,19 @@ def train():
     """
     # define the checkpoint
     checkpoint = ModelCheckpoint(os.path.join(_oracle_path_, _oracle_checkpoint_format_),
-                                 monitor='val_acc',
-                                 # save_best_only=True,
+                                 monitor='acc',
+                                 save_best_only=True,
                                  mode='max')
+    val_checkpoint = ModelCheckpoint(os.path.join(_oracle_path_, _oracle_checkpoint_format_),
+                                     monitor='val_acc',
+                                     save_best_only=True,
+                                     mode='max')
     early_stop = EarlyStopping(monitor='val_acc',
                                min_delta=0.01,
                                patience=5,
                                mode='max')
     
-    callbacks_list = [checkpoint, early_stop]
+    callbacks_list = [checkpoint, val_checkpoint, early_stop]
 
     # fit the model
     _model_.fit(_x_, _y_,
