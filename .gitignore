@@ -108,4 +108,5 @@ venv.bak/
 venv/
 app.config
 *.hdf5
+*.hdf5.bak
 *.png

@@ -12,13 +12,17 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # disable the verbose output from Tens
 _oracle_path_ = os.path.dirname(os.path.realpath(__file__))
 _oracle_checkpoint_format_ = "model-epoch{epoch:02d}-{val_acc:.4f}-{acc:.4f}.hdf5"
 
-SEQUENCE_LEN = 20
+SEQUENCE_LEN = 10
 VAL_SPLIT = 0.3
+NEURONS = 512
+ACTIVATION = "tanh"
+DROPOUT = 0.6
+LOSS = "mse"
 EPOCHS = 50
 BATCH_SIZE = 64
 
 
-def _format_input_output_(data, input_size=20, validation_split=0.3):
+def _format_input_output_(data, input_size=10, validation_split=0.3):
     """
     formats the time series data for a ticker symbol into the X and Y for a LSTM model
     input.shape = (number_inputs, input_size, 5)
@@ -58,7 +62,7 @@ def _format_input_output_(data, input_size=20, validation_split=0.3):
     return numpy.array(x), numpy.array(y), numpy.array(x_val), numpy.array(y_val)
 
 
-def _build_model_(inputs, neurons=1024, activation_function="tanh", dropout=0.6, loss="mse", optimizer="adam"):
+def _build_model_(inputs, neurons=512, activation_function="tanh", dropout=0.6, loss="mse", optimizer="adam"):
     """
     define the LSTM model. Load the network weights from a previous run if available.
     https://www.kaggle.com/pablocastilla/predict-stock-prices-with-lstm
@@ -109,7 +113,7 @@ def _build_model_(inputs, neurons=1024, activation_function="tanh", dropout=0.6,
 
 
 _x_, _y_, _x_val_, _y_val_ = _format_input_output_(DAILY, SEQUENCE_LEN, VAL_SPLIT)
-_model_ = _build_model_(_x_)
+_model_ = _build_model_(_x_, NEURONS, ACTIVATION, DROPOUT, LOSS)
 
 
 def train():
