@@ -19,7 +19,7 @@ ACTIVATION = "tanh"
 DROPOUT = 0.6
 LOSS = "mse"
 EPOCHS = 50
-BATCH_SIZE = 64
+BATCH_SIZE = 32
 
 
 def _format_input_output_(data, input_size=10, validation_split=0.3):

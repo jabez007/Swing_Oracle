@@ -25,6 +25,7 @@ def _load_(tickers=list()):
                     if not any(d["ticker"] == t["ticker"] for t in tickers):
                         tickers += [d]
     # tickers = _download_(tickers)
+    tickers = sorted(tickers, key=lambda x: x["ticker"])
     _save_(tickers)
     return tickers
 
