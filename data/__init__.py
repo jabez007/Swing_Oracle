@@ -36,12 +36,15 @@ def _load_daily_(tickers):
     with open(_daily_json_) as daily_json:
         daily_data = json.load(daily_json)
 
-    for ticker, dates in daily_data.items():
-        # clean out any data that is older than one year
-        for date in list(dates.keys()):
-            if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
-                del dates[date]
-    '''
+    for ticker, dates in list(daily_data.items()):
+        if len(dates) == 0:  # if we've eventually cleared all the data from this ticker symbol
+            del daily_data[ticker]
+        else:
+            # clean out any data that is older than one year
+            for date in list(dates.keys()):
+                if datetime.strptime(date, "%Y-%m-%d").date() < _year_old_:
+                    del dates[date]
+    # '''
     for t in tickers:
         _daily_data = _download_daily_100_(t["ticker"])
         sleep(2)  # slow it down so we don't hit a rate limit
@@ -55,6 +58,15 @@ def _load_daily_(tickers):
                     continue  # skip today's date so we don't pull in-progress data
                 if date not in daily_data[t["ticker"]]:
                     daily_data[t["ticker"]][date] = _daily_data["Daily"][date]
+
+        _rsi_data = _download_rsi_(t["ticker"])
+        sleep(2)
+        for date, data in daily_data[t["ticker"]].items():
+            if date in _rsi_data["RSI"]:
+                daily_data[t["ticker"]][date]["RSI"] = _rsi_data["RSI"][date]
+            else:
+                daily_data[t["ticker"]][date]["RSI"] = "0.00"
+
     # '''
     _save_daily_(daily_data)
 
@@ -113,8 +125,8 @@ def _download_rsi_(symbol):
     if r.status_code < 400:
         _data = r.json()
         if "Meta Data" in _data:
-            data["Symbol"] = _data["Meta Data"]["1. Symbol"]
-            for date, rsi in _data["Meta Data"]["Technical Analysis: RSI"].items():
+            data["Symbol"] = _data["Meta Data"]["1: Symbol"]
+            for date, rsi in _data["Technical Analysis: RSI"].items():
                 if len(date.split(" ")) == 1:  # the RSI for the current date will have a date and time
                     data["RSI"][date] = rsi["RSI"]
 
