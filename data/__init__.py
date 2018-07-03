@@ -60,7 +60,7 @@ def _load_daily_(tickers):
                         continue  # skip today's date so we don't pull in-progress data
                     if date not in daily_data[t["ticker"]]:
                         daily_data[t["ticker"]][date] = _daily_data["Daily"][date]
-            '''
+            
             _rsi_data = _download_rsi_(t["ticker"])
             sleep(2)
             for date, data in daily_data[t["ticker"]].items():

@@ -1,7 +1,7 @@
 from . import Plot
 from data import DAILY, TimeSeries
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.layers import Dense, Dropout, LeakyReLU, LSTM
+from keras.layers import Conv1D, Dense, Dropout, LeakyReLU, LSTM
 from keras.models import Sequential, load_model
 import numpy
 import os
@@ -26,7 +26,7 @@ def _format_input_output_(data, input_size=10, validation_split=0.3):
     """
     formats the time series data for a ticker symbol into the X and Y for a LSTM model
     input.shape = (number_inputs, input_size, 5)
-    output.shape = (number_inputs, input_size, 5)
+    output.shape = (number_inputs, 1, 5)
     :param data: {
                         "ABC": {
                             "2018-06-17": {
@@ -51,7 +51,7 @@ def _format_input_output_(data, input_size=10, validation_split=0.3):
     data_items = list(data.items())
     random.shuffle(data_items)
     for symbol, _data in data_items:
-        _x, _y = _data.get_input_output(input_size, input_size)
+        _x, _y = _data.get_input_output(input_size, 1)
         if random.random() < validation_split:
             x_val += _x
             y_val += _y
@@ -102,7 +102,13 @@ def _build_model_(inputs, neurons=512, activation_function="tanh", dropout=0.6, 
                        return_sequences=True,
                        activation=activation_function))
         model.add(Dropout(dropout))
+        '''
         model.add(Dense(units=inputs.shape[2]))
+        '''
+        # Output time steps = (Input time step s —  Kernel size) / Strides + 1
+        model.add(Conv1D(filters=inputs.shape[2],  # the dimensionality of the output space
+                         kernel_size=inputs.shape[1],  # the length of the 1D convolution window
+                         activation=activation_function))
         # https://medium.com/@huangkh19951228/predicting-cryptocurrency-price-with-tensorflow-and-keras-e1674b0dc58a
         # https://cdn-images-1.medium.com/max/800/1*I4OU7P938Otu95YAR6yMIw.png
         model.add(LeakyReLU())
