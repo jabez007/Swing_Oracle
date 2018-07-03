@@ -64,8 +64,8 @@ class IntervalData(object):
                 self.high / 25.00,
                 self.low / 25.00,
                 self.close / 25.00,
-                self.volume / 1000000000.0,
-                self.rsi / 100]
+                self.volume / 1000000000.0]
+                # self.rsi / 100]
 
     def to_plot(self):
         """
