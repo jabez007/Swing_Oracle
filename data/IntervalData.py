@@ -49,6 +49,12 @@ class IntervalData(object):
         """
         self.volume = 0
 
+        """
+        the Relative Strength Index for this interval
+        :type rsi: float
+        """
+        self.rsi = 0.00
+
     def to_vector(self):
         """
         gives a normalized vector representation of this interval
@@ -58,7 +64,8 @@ class IntervalData(object):
                 self.high / 25.00,
                 self.low / 25.00,
                 self.close / 25.00,
-                self.volume / 1000000000.0]
+                self.volume / 1000000000.0,
+                self.rsi / 100]
 
     def to_plot(self):
         """
@@ -82,7 +89,8 @@ class IntervalData(object):
             "2. high": "",
             "3. low": "",
             "4. close": "",
-            "5. volume": ""
+            "5. volume": "",
+            "RSI": ""
         }
         :return: an initialized instance of IntervalData
         """
@@ -94,6 +102,7 @@ class IntervalData(object):
         interval_data.low = float(json_data["3. low"])
         interval_data.close = float(json_data["4. close"])
         interval_data.volume = int(json_data["5. volume"])
+        interval_data.rsi = float(json_data["RSI"])
         return interval_data
 
     @staticmethod
@@ -113,4 +122,5 @@ class IntervalData(object):
         interval_data.low = forecast_data[2] * 25.00
         interval_data.close = forecast_data[3] * 25.00
         interval_data.volume = forecast_data[4] * 1000000000.0
+        interval_data.rsi = forecast_data[5] * 100
         return interval_data
