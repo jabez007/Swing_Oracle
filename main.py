@@ -39,4 +39,5 @@ if len(sys.argv) == 2:
     else:
         print("-- invalid option selected")
 else:
-    pprint(DAILY)
+    train()
+    forecast()
