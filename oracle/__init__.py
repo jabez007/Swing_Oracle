@@ -136,7 +136,7 @@ def train():
                                      monitor='val_acc',
                                      save_best_only=True,
                                      mode='max')
-    early_stop = EarlyStopping(monitor='val_acc',
+    early_stop = EarlyStopping(monitor='acc',
                                min_delta=0.01,
                                patience=5,
                                mode='max')
