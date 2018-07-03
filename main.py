@@ -25,9 +25,9 @@ def forecast():
         if _forecast is not None:
             if _forecast.get_max_gain() >= 0.1:
                 figure = oracle.Plot.from_timeseries(_forecast)
+                # input("Press Enter to continue...")
                 tweet.PostUpdate(status=_forecast.get_title(),
                                  media=figure)
-                # input("Press Enter to continue...")
 
 
 if len(sys.argv) == 2:

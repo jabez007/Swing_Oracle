@@ -1,7 +1,7 @@
 from . import Plot
 from data import DAILY, TimeSeries
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.layers import Conv1D, Dense, Dropout, LeakyReLU, LSTM
+from keras.layers import Conv1D, Dropout, LeakyReLU, LSTM
 from keras.models import Sequential, load_model
 import numpy
 import os
