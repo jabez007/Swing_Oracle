@@ -14,9 +14,9 @@ _oracle_checkpoint_format_ = "model-epoch{epoch:02d}-{val_acc:.4f}-{acc:.4f}.hdf
 
 SEQUENCE_LEN = 5
 VAL_SPLIT = 0.3
-NEURONS = 256
+NEURONS = 512
 ACTIVATION = "tanh"
-DROPOUT = 0.4
+DROPOUT = 0.6
 LOSS = "mse"
 EPOCHS = 50
 BATCH_SIZE = 16
@@ -62,7 +62,7 @@ def _format_input_output_(data, input_size=5, validation_split=0.3):
     return numpy.array(x), numpy.array(y), numpy.array(x_val), numpy.array(y_val)
 
 
-def _build_model_(inputs, neurons=256, activation_function="tanh", dropout=0.4, loss="mse", optimizer="adam"):
+def _build_model_(inputs, neurons=512, activation_function="tanh", dropout=0.6, loss="mse", optimizer="adam"):
     """
     define the LSTM model. Load the network weights from a previous run if available.
     https://www.kaggle.com/pablocastilla/predict-stock-prices-with-lstm
