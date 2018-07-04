@@ -122,5 +122,5 @@ class IntervalData(object):
         interval_data.low = forecast_data[2] * 25.00
         interval_data.close = forecast_data[3] * 25.00
         interval_data.volume = forecast_data[4] * 1000000000.0
-        interval_data.rsi = forecast_data[5] * 100
+        # interval_data.rsi = forecast_data[5] * 100
         return interval_data
